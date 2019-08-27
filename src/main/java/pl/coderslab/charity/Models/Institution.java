@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Category {
+public class Institution {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +14,14 @@ public class Category {
 
     private String name;
 
-    public Category() {
+    private String description;
+
+    public Institution() {
     }
 
-    public Category(String name) {
+    public Institution(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 
     public long getId() {
@@ -35,5 +38,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
