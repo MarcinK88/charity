@@ -20,6 +20,7 @@ public class HomeController {
     @Autowired
     private DonationRepository donationRepository;
 
+
     @RequestMapping("/")
     public String homeAction(Model model){
 
@@ -28,6 +29,10 @@ public class HomeController {
 
         int quantityDonations = donationRepository.getQuantityDonations();
         model.addAttribute("quantityDonations", quantityDonations);
+
+        long quantityInstitutions = institutionRepository.count();
+
+        model.addAttribute("quantityInstitutions", quantityInstitutions);
 
         return "index";
     }

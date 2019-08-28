@@ -26,7 +26,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${quantityInstitutions}</em>
             <h3>Wspartych organizacji</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
