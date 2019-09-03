@@ -175,6 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var pickUpTime = document.getElementById("pickUpTime");
       var pickUpComment = document.getElementById("pickUpComment");
       var institution = document.getElementsByName("institution");
+      var category = document.getElementsByName("categories");
 
       // get summary elements
       var quantitySummary = document.getElementById("quantitySummary");
@@ -205,7 +206,15 @@ document.addEventListener("DOMContentLoaded", function() {
           institutionSummary.innerText = institution[i].getAttribute("itemid");
         }
       }
-      
+
+      var selectedCategories = [];
+
+      for (var i = 0; i < category.length; i++) {
+        if(category[i].checked) {
+          selectedCategories.push(category[i].getAttribute("itemid"));
+              }
+        }
+        categorySummary.innerText = selectedCategories.toString();
 
     }
 
