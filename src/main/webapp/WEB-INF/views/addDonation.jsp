@@ -64,7 +64,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="quantity" step="1" min="1" />
+                        <input type="number" name="quantity" step="1" min="1" value="1" />
                     </label>
                 </div>
 
@@ -76,37 +76,24 @@
 
 
 
-            <!-- STEP 4 -->
+            <!-- STEP 3 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
+                <c:forEach items="${institutions}" var="institution">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="organization" value="old" />
+                        <input type="radio" name="institution" value="${institution.id}" />
                         <span class="checkbox radio"></span>
                         <span class="description">
-                  <div class="title">Fundacja “Bez domu”</div>
+                  <div class="title">Fundacja “${institution.name}”</div>
                   <div class="subtitle">
-                    Cel i misja: Pomoc dla osób nie posiadających miejsca
-                    zamieszkania
+                    Cel i misja: ${institution.description}
                   </div>
                 </span>
                     </label>
                 </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="organization" value="old" />
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title">Fundacja “Dla dzieci"</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-                    życiowej.
-                  </div>
-                </span>
-                    </label>
-                </div>
+                </c:forEach>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
@@ -114,7 +101,7 @@
                 </div>
             </div>
 
-            <!-- STEP 5 -->
+            <!-- STEP 4 -->
             <div data-step="4">
                 <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
@@ -166,7 +153,7 @@
                 </div>
             </div>
 
-            <!-- STEP 6 -->
+            <!-- STEP 5 -->
             <div data-step="5">
                 <h3>Podsumowanie Twojej darowizny</h3>
 

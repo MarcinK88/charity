@@ -43,7 +43,7 @@ public class DonationController {
         System.out.println("test: ");
 
 
-            System.out.println(donation.getQuantity());
+            System.out.println(donation.getInstitution().getName());
 
 
         return "redirect:/";
