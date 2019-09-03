@@ -10,6 +10,7 @@ import pl.coderslab.charity.Models.Category;
 import pl.coderslab.charity.Models.Donation;
 import pl.coderslab.charity.Models.Institution;
 import pl.coderslab.charity.Repositories.CategoryRepository;
+import pl.coderslab.charity.Repositories.DonationRepository;
 import pl.coderslab.charity.Repositories.InstitutionRepository;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public class DonationController {
 
     @Autowired
     private InstitutionRepository institutionRepository;
+
+    @Autowired
+    private DonationRepository donationRepository;
 
     @GetMapping("/adddonation")
     private String addDonation(Model model) {
@@ -40,17 +44,7 @@ public class DonationController {
     @PostMapping("/adddonation")
     private String addDonationPost(@ModelAttribute Donation donation) {
 
-        System.out.println("test: ");
-
-
-        System.out.println(donation.getStreet());
-        System.out.println(donation.getCity());
-        System.out.println(donation.getZipcode());
-        System.out.println(donation.getPhone());
-        System.out.println(donation.getPickUpDate());
-        System.out.println(donation.getPickUpTime());
-        System.out.println(donation.getPickUpComment());
-
+        donationRepository.save(donation);
 
         return "redirect:/";
     }
