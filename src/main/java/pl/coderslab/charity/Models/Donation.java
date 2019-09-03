@@ -1,5 +1,7 @@
 package pl.coderslab.charity.Models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Data
+@AllArgsConstructor
 public class Donation {
 
     @Id
@@ -56,92 +60,6 @@ public class Donation {
         this.phone = phone;
     }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
-
-    public Institution getInstitution() {
-        return institution;
-    }
-
-    public void setInstitution(Institution institution) {
-        this.institution = institution;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public LocalDate getPickUpDate() {
-        return pickUpDate;
-    }
-
-    public void setPickUpDate(LocalDate pickUpDate) {
-        this.pickUpDate = pickUpDate;
-    }
-
-    public Date getPickUpTime() {
-        return pickUpTime;
-    }
-
-    public void setPickUpTime(Date pickUpTime) {
-        this.pickUpTime = pickUpTime;
-    }
-
-    public String getPickUpComment() {
-        return pickUpComment;
-    }
-
-    public void setPickUpComment(String pickUpComment) {
-        this.pickUpComment = pickUpComment;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }
 

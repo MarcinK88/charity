@@ -12,20 +12,35 @@ import pl.coderslab.charity.Models.Institution;
 import pl.coderslab.charity.Repositories.CategoryRepository;
 import pl.coderslab.charity.Repositories.DonationRepository;
 import pl.coderslab.charity.Repositories.InstitutionRepository;
+import pl.coderslab.charity.Services.TestService;
 
 import java.util.List;
 
 @Controller
 public class DonationController {
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
+    private final InstitutionRepository institutionRepository;
+    private final DonationRepository donationRepository;
+    private final TestService testService;
 
     @Autowired
-    private InstitutionRepository institutionRepository;
+    public DonationController(CategoryRepository categoryRepository,
+                              InstitutionRepository institutionRepository,
+                              DonationRepository donationRepository,
+                              TestService testService) {
+        this.categoryRepository = categoryRepository;
+        this.institutionRepository = institutionRepository;
+        this.donationRepository = donationRepository;
+        this.testService = testService;
 
-    @Autowired
-    private DonationRepository donationRepository;
+    }
+
+    public String testControllerAction() {
+        testService.testFunction();
+        return "ok";
+    }
+
 
     @GetMapping("/adddonation")
     private String addDonation(Model model) {
