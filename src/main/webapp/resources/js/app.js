@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var pickUpDate = document.getElementById("pickUpDate");
       var pickUpTime = document.getElementById("pickUpTime");
       var pickUpComment = document.getElementById("pickUpComment");
-      var institution = document.getElementById("institution");
+      var institution = document.getElementsByName("institution");
 
       // get summary elements
       var quantitySummary = document.getElementById("quantitySummary");
@@ -199,6 +199,13 @@ document.addEventListener("DOMContentLoaded", function() {
       pickuptimeSummary.innerText = pickUpTime.value;
       pickupcommentSummary.innerText = pickUpComment.value;
 
+
+      for (var i = 0; i < institution.length; i++) {
+        if(institution[i].checked) {
+          institutionSummary.innerText = institution[i].getAttribute("itemid");
+        }
+      }
+      
 
     }
 
