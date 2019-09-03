@@ -164,6 +164,42 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+
+      // get elements from inputs
+      var quantity = document.getElementById("quantity");
+      var street = document.getElementById("street");
+      var city = document.getElementById("city");
+      var zipcode = document.getElementById("zipcode");
+      var phone = document.getElementById("phone");
+      var pickUpDate = document.getElementById("pickUpDate");
+      var pickUpTime = document.getElementById("pickUpTime");
+      var pickUpComment = document.getElementById("pickUpComment");
+      var institution = document.getElementById("institution");
+
+      // get summary elements
+      var quantitySummary = document.getElementById("quantitySummary");
+      var categorySummary = document.getElementById("categorySummary");
+      var institutionSummary = document.getElementById("institutionSummary");
+      var streetSummary = document.getElementById("streetSummary");
+      var citySummary = document.getElementById("citySummary");
+      var zipcodeSummary = document.getElementById("zipcodeSummary");
+      var phoneSummary = document.getElementById("phoneSummary");
+      var pickupdateSummary = document.getElementById("pickupdateSummary");
+      var pickuptimeSummary = document.getElementById("pickuptimeSummary");
+      var pickupcommentSummary = document.getElementById("pickupcommentSummary");
+
+
+      // set summary elements
+      quantitySummary.innerText = quantity.value;
+      streetSummary.innerText = street.value;
+      citySummary.innerText = city.value;
+      zipcodeSummary.innerText = zipcode.value;
+      phoneSummary.innerText = phone.value;
+      pickupdateSummary.innerText = pickUpDate.value;
+      pickuptimeSummary.innerText = pickUpTime.value;
+      pickupcommentSummary.innerText = pickUpComment.value;
+
+
     }
 
   }
