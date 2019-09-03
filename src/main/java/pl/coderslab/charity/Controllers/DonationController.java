@@ -43,7 +43,13 @@ public class DonationController {
         System.out.println("test: ");
 
 
-            System.out.println(donation.getInstitution().getName());
+        System.out.println(donation.getStreet());
+        System.out.println(donation.getCity());
+        System.out.println(donation.getZipcode());
+        System.out.println(donation.getPhone());
+        System.out.println(donation.getPickUpDate());
+        System.out.println(donation.getPickUpTime());
+        System.out.println(donation.getPickUpComment());
 
 
         return "redirect:/";

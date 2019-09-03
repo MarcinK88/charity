@@ -3,9 +3,9 @@ package pl.coderslab.charity.Models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -32,14 +32,18 @@ public class Donation {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
-    private Time pickUpTime;
+    @Temporal(TemporalType.TIME)
+    @DateTimeFormat(pattern = "HH:mm")
+    private Date pickUpTime;
 
     private String pickUpComment;
+
+    private String phone;
 
     public Donation() {
     }
 
-    public Donation(int quantity, Set<Category> categories, Institution institution, String street, String city, String zipcode, LocalDate pickUpDate, Time pickUpTime, String pickUpComment) {
+    public Donation(int quantity, Set<Category> categories, Institution institution, String street, String city, String zipcode, LocalDate pickUpDate, Date pickUpTime, String pickUpComment, String phone) {
         this.quantity = quantity;
         this.categories = categories;
         this.institution = institution;
@@ -49,6 +53,7 @@ public class Donation {
         this.pickUpDate = pickUpDate;
         this.pickUpTime = pickUpTime;
         this.pickUpComment = pickUpComment;
+        this.phone = phone;
     }
 
     public long getId() {
@@ -115,11 +120,11 @@ public class Donation {
         this.pickUpDate = pickUpDate;
     }
 
-    public Time getPickUpTime() {
+    public Date getPickUpTime() {
         return pickUpTime;
     }
 
-    public void setPickUpTime(Time pickUpTime) {
+    public void setPickUpTime(Date pickUpTime) {
         this.pickUpTime = pickUpTime;
     }
 
@@ -129,6 +134,14 @@ public class Donation {
 
     public void setPickUpComment(String pickUpComment) {
         this.pickUpComment = pickUpComment;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
 
