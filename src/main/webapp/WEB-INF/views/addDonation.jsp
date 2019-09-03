@@ -43,13 +43,13 @@
                 <h3>Zaznacz co chcesz oddać:</h3>
 
                 <c:forEach items="${categories}" var="category">
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="${category.id}" />
-                        <span class="checkbox"></span>
-                        <span class="description">${category.name}</span>
-                    </label>
-                </div>
+                    <div class="form-group form-group--checkbox">
+                        <label>
+                            <input type="checkbox" name="categories" value="${category.id}" />
+                            <span class="checkbox"></span>
+                            <span class="description">${category.name}</span>
+                        </label>
+                    </div>
                 </c:forEach>
 
                 <div class="form-group form-group--buttons">
