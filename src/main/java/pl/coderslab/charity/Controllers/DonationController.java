@@ -40,6 +40,12 @@ public class DonationController {
     @PostMapping("/adddonation")
     private String addDonationPost(@ModelAttribute Donation donation) {
 
+        System.out.println("test: ");
+
+
+            System.out.println(donation.getQuantity());
+
+
         return "redirect:/";
     }
 
