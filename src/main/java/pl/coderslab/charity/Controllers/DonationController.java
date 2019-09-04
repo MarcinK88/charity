@@ -6,37 +6,36 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.coderslab.charity.Models.Category;
 import pl.coderslab.charity.Models.Donation;
-import pl.coderslab.charity.Models.Institution;
-import pl.coderslab.charity.Repositories.CategoryRepository;
-import pl.coderslab.charity.Repositories.DonationRepository;
-import pl.coderslab.charity.Repositories.InstitutionRepository;
-
-import java.util.List;
+import pl.coderslab.charity.Services.CategoryService;
+import pl.coderslab.charity.Services.DonationService;
+import pl.coderslab.charity.Services.InstitutionService;
 
 @Controller
 public class DonationController {
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
+    private final InstitutionService institutionService;
+    private final DonationService donationService;
 
     @Autowired
-    private InstitutionRepository institutionRepository;
+    public DonationController(CategoryService categoryService,
+                              InstitutionService institutionService,
+                              DonationService donationService) {
 
-    @Autowired
-    private DonationRepository donationRepository;
+        this.categoryService = categoryService;
+        this.institutionService = institutionService;
+        this.donationService = donationService;
+
+    }
+
 
     @GetMapping("/adddonation")
     private String addDonation(Model model) {
         Donation donation = new Donation();
         model.addAttribute("donation", donation);
-
-        List<Category> categories = categoryRepository.findAll();
-        model.addAttribute("categories", categories);
-
-        List<Institution> institutions = institutionRepository.findAll();
-        model.addAttribute("institutions", institutions);
+        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("institutions", institutionService.findAll());
 
         return "addDonation";
     }
@@ -44,7 +43,7 @@ public class DonationController {
     @PostMapping("/adddonation")
     private String addDonationPost(@ModelAttribute Donation donation) {
 
-        donationRepository.save(donation);
+        donationService.save(donation);
 
         return "redirect:/";
     }
