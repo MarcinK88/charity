@@ -29,6 +29,15 @@ public class UserController {
     @PostMapping("/register")
     public String register(@ModelAttribute User user){
 
+        if(user.getPassword().equals(user.getConfirmPassword())) {
+
+        } else {
+            //constraintViolation
+            //przekierować na tą samą stronę, dodać error i wyświetlic że hasło nieprawidłowe
+            //https://memorynotfound.com/custom-password-constraint-validator-annotation/
+            //https://stackoverflow.com/questions/1972933/cross-field-validation-with-hibernate-validator-jsr-303/2155576#2155576
+        }
+
         userService.save(user);
         return "redirect:/";
     }
