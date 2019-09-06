@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="header-form-page.jsp"></jsp:include>
 
 
 <section class="form--steps">
