@@ -3,11 +3,17 @@ package pl.coderslab.charity.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Services.UserService;
+
+import javax.validation.Valid;
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 @Controller
 public class UserController {
@@ -27,19 +33,14 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute User user){
+    public String registerPost(@Valid @ModelAttribute("newuser") User newuser, BindingResult result){
 
-        if(user.getPassword().equals(user.getConfirmPassword())) {
-
-        } else {
-            //constraintViolation
-            //przekierować na tą samą stronę, dodać error i wyświetlic że hasło nieprawidłowe
-            //https://memorynotfound.com/custom-password-constraint-validator-annotation/
-            //https://stackoverflow.com/questions/1972933/cross-field-validation-with-hibernate-validator-jsr-303/2155576#2155576
+        if (result.hasErrors()) {
+            return "register";
         }
 
-        userService.save(user);
         return "redirect:/";
+
     }
 
 
