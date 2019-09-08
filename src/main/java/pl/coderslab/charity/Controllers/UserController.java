@@ -38,9 +38,23 @@ public class UserController {
             //https://stackoverflow.com/questions/1972933/cross-field-validation-with-hibernate-validator-jsr-303/2155576#2155576
         }
 
-        userService.save(user);
+        userService.saveNewUser(user);
         return "redirect:/";
     }
+
+//    @GetMapping("/login")
+//    public String getLogin(Model model) {
+//
+//        return "login";
+//    }
+//
+//    @PostMapping("/login")
+//    public String postLogin(HttpServletRequest request, Principal principal) {
+//
+//        HttpSession session = request.getSession();
+//        session.setAttribute("loggedUser", principal.getName());
+//        return "/";
+//    }
 
 
 }

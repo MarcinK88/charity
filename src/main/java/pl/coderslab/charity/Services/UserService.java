@@ -4,6 +4,7 @@ import pl.coderslab.charity.Models.User;
 
 public interface UserService {
 
-    void save(User user);
+    void saveNewUser(User user);
     User newUser();
+    User loadUserByUsername(String username);
 }
