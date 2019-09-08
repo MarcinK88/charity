@@ -16,6 +16,10 @@ public class User {
 
     private String password;
 
+    private String name;
+
+    private String surname;
+
     @Transient
     private String confirmPassword;
 
@@ -28,11 +32,13 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String confirmPassword, boolean enabled, UserRoles userRoles) {
+    public User(String username, String password, String confirmPassword, boolean enabled, UserRoles userRoles, String name, String surname) {
         this.username = username;
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.enabled = enabled;
         this.userRoles = userRoles;
+        this.name = name;
+        this.surname = surname;
     }
 }
