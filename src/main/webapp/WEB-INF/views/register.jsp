@@ -17,7 +17,13 @@
     <h2>Załóż konto</h2>
     <form:form method="post" modelAttribute="newuser">
         <div class="form-group">
-            <form:input path="email" type="email" name="email" placeholder="Email" />
+            <form:input path="name" type="text" name="name" placeholder="Imię" />
+        </div>
+        <div class="form-group">
+            <form:input path="surname" type="text" name="surname" placeholder="Nazwisko" />
+        </div>
+        <div class="form-group">
+            <form:input path="username" type="email" name="username" placeholder="Email" />
         </div>
         <div class="form-group">
             <form:input path="password" type="password" name="password" placeholder="Hasło" />
@@ -29,7 +35,7 @@
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
+            <a href="/login" class="btn btn--without-border">Zaloguj się</a>
             <form:button class="btn" type="submit">Załóż konto</form:button>
         </div>
     </form:form>

@@ -36,10 +36,26 @@ public class UserController {
             return "register";
         }
 
-        userService.save(newuser);
+
+        userService.saveNewUser(user);
+
         return "redirect:/";
 
     }
+
+//    @GetMapping("/login")
+//    public String getLogin(Model model) {
+//
+//        return "login";
+//    }
+//
+//    @PostMapping("/login")
+//    public String postLogin(HttpServletRequest request, Principal principal) {
+//
+//        HttpSession session = request.getSession();
+//        session.setAttribute("loggedUser", principal.getName());
+//        return "/";
+//    }
 
 
 }
