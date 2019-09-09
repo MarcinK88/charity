@@ -1,5 +1,6 @@
 package pl.coderslab.charity.Services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,26 +16,31 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
+    @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
-
     public void saveNewUser(User user) {
-        user.setPassword(BCrypt.hashpw(user.getPassword(),BCrypt.gensalt()));
-        user.setConfirmPassword(BCrypt.hashpw(user.getPassword(),BCrypt.gensalt()));
+        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+        user.setConfirmPassword(user.getPassword());
+
+        System.out.println("password: " + user.getPassword());
+        System.out.println("confirmpassword: " + user.getConfirmPassword());
 
         user.setEnabled(true);
+        userRepository.save(user);
+    }
 
-
+    @Override
     public void save(User user) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setConfirmPassword(user.getPassword());
-
+        user.setEnabled(true);
         userRepository.save(user);
     }
 

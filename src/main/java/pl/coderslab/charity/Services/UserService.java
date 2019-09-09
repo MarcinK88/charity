@@ -7,4 +7,5 @@ public interface UserService {
     void saveNewUser(User user);
     User newUser();
     User loadUserByUsername(String username);
+    void save(User user);
 }

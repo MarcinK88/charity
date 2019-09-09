@@ -32,7 +32,6 @@ public class User {
     private String surname;
 
     @Transient
-    @NotEmpty(message = "pole nie może byc puste")
     private String confirmPassword;
 
     private boolean enabled;

@@ -30,14 +30,14 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerPost(@Valid @ModelAttribute("newuser") User newuser, BindingResult result){
+    public String registerPost(@ModelAttribute("newuser") @Valid User newuser, BindingResult result){
 
         if (result.hasErrors()) {
             return "register";
         }
 
 
-        userService.saveNewUser(user);
+        userService.save(newuser);
 
         return "redirect:/";
 
