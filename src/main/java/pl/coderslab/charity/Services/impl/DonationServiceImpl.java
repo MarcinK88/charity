@@ -23,7 +23,16 @@ public class DonationServiceImpl implements DonationService {
     }
 
     @Override
-    public int getQuantityDonations() {
-        return donationRepository.getQuantityDonations();
+    public Long getQuantityDonations() {
+
+        Long quantity = donationRepository.getQuantityDonations();
+
+        if(quantity!=null){
+            return quantity;
+        } else {
+            return 0L;
+        }
+
+
     }
 }

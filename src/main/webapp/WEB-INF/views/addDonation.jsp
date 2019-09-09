@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -13,8 +14,8 @@
 <body>
 <jsp:include page="header-form-page.jsp"></jsp:include>
 
-
 <section class="form--steps">
+    <sec:authentication var="user" property="principal" />
     <div class="form--steps-instructions">
         <div class="form--steps-container">
             <h3>Ważne!</h3>
@@ -196,7 +197,7 @@
                         </div>
                     </div>
                 </div>
-
+                <input type="hidden" name="user" id="user" value="${user.username}"/>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="submit" class="btn">Potwierdzam</button>
