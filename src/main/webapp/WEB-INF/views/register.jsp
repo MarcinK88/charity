@@ -27,9 +27,11 @@
         </div>
         <div class="form-group">
             <form:input path="password" type="password" name="password" placeholder="Hasło" />
+            <form:errors path="password" cssClass="error" />
         </div>
         <div class="form-group">
             <form:input path="confirmPassword" type="password" name="password2" placeholder="Powtórz hasło" />
+            <form:errors path="confirmPassword" cssClass="error"/>
         </div>
 
         <div class="form-group form-group--buttons">
