@@ -27,6 +27,9 @@ public class Donation {
     @ManyToOne
     private Institution institution;
 
+    @ManyToOne
+    private User user;
+
     private String street;
 
     private String city;
@@ -47,7 +50,7 @@ public class Donation {
     public Donation() {
     }
 
-    public Donation(int quantity, Set<Category> categories, Institution institution, String street, String city, String zipcode, LocalDate pickUpDate, Date pickUpTime, String pickUpComment, String phone) {
+    public Donation(int quantity, Set<Category> categories, Institution institution, String street, String city, String zipcode, LocalDate pickUpDate, Date pickUpTime, String pickUpComment, String phone, User user) {
         this.quantity = quantity;
         this.categories = categories;
         this.institution = institution;
@@ -58,6 +61,7 @@ public class Donation {
         this.pickUpTime = pickUpTime;
         this.pickUpComment = pickUpComment;
         this.phone = phone;
+        this.user = user;
     }
 
 
