@@ -26,6 +26,10 @@ public class MyUserPrincipal implements UserDetails {
         return user.getPassword();
     }
 
+    public Long getId() {
+        return user.getId();
+    }
+
     @Override
     public String getUsername() {
         return user.getUsername();
@@ -53,5 +57,13 @@ public class MyUserPrincipal implements UserDetails {
 
     public String getName(){
         return user.getName();
+    }
+
+    public String getSurname() {
+        return user.getSurname();
+    }
+
+    public String getEmail() {
+        return user.getUsername();
     }
 }

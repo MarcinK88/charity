@@ -197,7 +197,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="user" id="user" value="${user.username}"/>
+                <input type="hidden" name="user" id="user" value="${user.id}"/>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="submit" class="btn">Potwierdzam</button>

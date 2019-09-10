@@ -1,25 +1,30 @@
 package pl.coderslab.charity.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.Models.User;
+import pl.coderslab.charity.Services.DonationService;
 import pl.coderslab.charity.Services.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class UserController {
 
     private final UserService userService;
 
+    private final DonationService donationService;
+
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, DonationService donationService) {
         this.userService = userService;
+        this.donationService = donationService;
     }
 
     @GetMapping("/register")
@@ -35,27 +40,53 @@ public class UserController {
         if (result.hasErrors()) {
             return "register";
         }
-
-
         userService.save(newuser);
 
         return "redirect:/";
 
     }
 
-//    @GetMapping("/login")
-//    public String getLogin(Model model) {
-//
-//        return "login";
-//    }
-//
-//    @PostMapping("/login")
-//    public String postLogin(HttpServletRequest request, Principal principal) {
-//
-//        HttpSession session = request.getSession();
-//        session.setAttribute("loggedUser", principal.getName());
-//        return "/";
-//    }
+    @GetMapping("/profile")
+    public String profile(Model model, Principal principal) {
 
+        model.addAttribute("donationQuantity", donationService.getQuantityUserDonations(userService.loadUserByUsername(principal.getName())));
+        return "user-details";
+    }
 
+    @GetMapping("/password")
+    public String changePassword(Model model, Principal principal) {
+        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        model.addAttribute("iscorrectpassword","");
+        return "password-change";
+    }
+
+    @PostMapping("/password")
+    public String changePasswordPost(Model model, @ModelAttribute("user") @Valid User user, BindingResult result, @RequestParam String oldpwd){
+
+        if (result.hasErrors()) {
+            return "password-change";
+        } else if(!userService.comparePassword(userService.loadUserByUsername(user.getUsername()).getPassword(), oldpwd)) {
+            model.addAttribute("iscorrectpassword", "hasło niepoprawne");
+            return "password-change";
+        } else {
+            userService.save(user);
+            return "redirect:/profile";
+        }
+    }
+
+    @GetMapping("/edituser")
+    public String editUser(Model model, Principal principal){
+
+        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+
+        return "user-edit";
+    }
+
+    @PostMapping("/edituser")
+    public String editUserPost(@ModelAttribute("user") User user, Principal principal){
+
+        userService.update(user, principal.getName());
+        SecurityContextHolder.clearContext();
+        return "redirect:/login";
+    }
 }

@@ -3,6 +3,7 @@ package pl.coderslab.charity.Services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.Models.Donation;
+import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Repositories.DonationRepository;
 import pl.coderslab.charity.Services.DonationService;
 
@@ -32,7 +33,17 @@ public class DonationServiceImpl implements DonationService {
         } else {
             return 0L;
         }
+    }
 
+    @Override
+    public Long getQuantityUserDonations(User user) {
 
+        Long quantity = donationRepository.getQuantityUserDonations(user.getId());
+
+        if(quantity!=null){
+            return quantity;
+        } else {
+            return 0L;
+        }
     }
 }
