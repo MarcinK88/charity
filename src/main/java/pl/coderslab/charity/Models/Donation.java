@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,7 +23,7 @@ public class Donation {
     private int quantity;
 
     @OneToMany
-    private Set<Category> categories;
+    private List<Category> categories;
 
     @ManyToOne
     private Institution institution;
@@ -36,8 +37,9 @@ public class Donation {
 
     private String zipcode;
 
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate pickUpDate;
+    private Date pickUpDate;
 
     @Temporal(TemporalType.TIME)
     @DateTimeFormat(pattern = "HH:mm")
@@ -50,7 +52,7 @@ public class Donation {
     public Donation() {
     }
 
-    public Donation(int quantity, Set<Category> categories, Institution institution, String street, String city, String zipcode, LocalDate pickUpDate, Date pickUpTime, String pickUpComment, String phone, User user) {
+    public Donation(int quantity, List<Category> categories, Institution institution, String street, String city, String zipcode, Date pickUpDate, Date pickUpTime, String pickUpComment, String phone, User user) {
         this.quantity = quantity;
         this.categories = categories;
         this.institution = institution;
