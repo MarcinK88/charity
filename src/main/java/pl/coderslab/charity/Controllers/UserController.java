@@ -1,6 +1,8 @@
 package pl.coderslab.charity.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,8 +40,6 @@ public class UserController {
         if (result.hasErrors()) {
             return "register";
         }
-
-
         userService.save(newuser);
 
         return "redirect:/";
@@ -49,7 +49,7 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model, Principal principal) {
 
-       model.addAttribute("donationQuantity", donationService.getQuantityUserDonations(principal.getName()));
+        model.addAttribute("donationQuantity", donationService.getQuantityUserDonations(userService.loadUserByUsername(principal.getName())));
         return "user-details";
     }
 
@@ -85,8 +85,8 @@ public class UserController {
     @PostMapping("/edituser")
     public String editUserPost(@ModelAttribute("user") User user, Principal principal){
 
-        System.out.println("PRINCIPAL: " + principal.getName());
         userService.update(user, principal.getName());
-        return "redirect:/profile";
+        SecurityContextHolder.clearContext();
+        return "redirect:/login";
     }
 }

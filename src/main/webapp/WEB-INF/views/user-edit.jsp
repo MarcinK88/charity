@@ -37,6 +37,7 @@
         </div>
 
         <form:hidden path="enabled"/>
+        <form:hidden path="id"/>
 
         <div class="form-group form-group--buttons">
             <a href="/profile" class="btn btn--without-border">Anuluj</a>

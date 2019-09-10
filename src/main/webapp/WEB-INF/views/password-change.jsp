@@ -25,6 +25,7 @@
         <form:hidden path="surname"/>
         <form:hidden path="enabled"/>
         <form:hidden path="userRoles"/>
+        <form:hidden path="id"/>
         <div class="form-group">
             <input type="password" name="oldpwd" id="oldpwd" placeholder="Stare hasło" />
             ${iscorrectpassword}
