@@ -32,7 +32,7 @@
                         <span class="title">${donationQuantity}</span>
                     </li>
                     <a href="#" class="btn btn--without-border">Zmień dane</a>
-                    <a href="#" class="btn btn--without-border">Zmień hasło</a>
+                    <a href="/password" class="btn btn--without-border">Zmień hasło</a>
                 </ul>
                 </h1>
             </div>

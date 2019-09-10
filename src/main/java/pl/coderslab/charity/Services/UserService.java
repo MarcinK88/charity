@@ -8,4 +8,5 @@ public interface UserService {
     User newUser();
     User loadUserByUsername(String username);
     void save(User user);
+    boolean comparePassword(String oldpwd, String newpwd);
 }

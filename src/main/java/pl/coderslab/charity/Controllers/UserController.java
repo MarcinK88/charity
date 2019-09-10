@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Services.DonationService;
 import pl.coderslab.charity.Services.UserService;
@@ -51,10 +49,34 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model, Principal principal) {
 
-        System.out.println("principal name: " + principal.getName());
-        System.out.println("quantity: " + donationService.getQuantityUserDonations(principal.getName()));
-        model.addAttribute("donationQuantity", donationService.getQuantityUserDonations(principal.getName()));
+       model.addAttribute("donationQuantity", donationService.getQuantityUserDonations(principal.getName()));
         return "user-details";
+    }
+
+    @GetMapping("/password")
+    public String changePassword(Model model, Principal principal) {
+        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        model.addAttribute("iscorrectpassword","");
+        return "password-change";
+    }
+
+    @PostMapping("/password")
+    public String changePasswordPost(Model model, @ModelAttribute("user") @Valid User user, BindingResult result, @RequestParam String oldpwd){
+
+        if (result.hasErrors()) {
+            return "password-change";
+        } else if(!userService.comparePassword(userService.loadUserByUsername(user.getUsername()).getPassword(), oldpwd)) {
+
+
+            model.addAttribute("iscorrectpassword", "hasło niepoprawne");
+            return "password-change";
+        } else {
+
+            userService.save(user);
+
+            return "redirect:/profile";
+        }
+
     }
 
 

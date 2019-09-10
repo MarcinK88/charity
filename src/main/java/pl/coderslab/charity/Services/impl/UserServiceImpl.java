@@ -26,9 +26,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         user.setConfirmPassword(user.getPassword());
 
-        System.out.println("password: " + user.getPassword());
-        System.out.println("confirmpassword: " + user.getConfirmPassword());
-
         user.setEnabled(true);
         userRepository.save(user);
     }
@@ -42,6 +39,12 @@ public class UserServiceImpl implements UserService {
         user.setConfirmPassword(user.getPassword());
         user.setEnabled(true);
         userRepository.save(user);
+    }
+
+    @Override
+    public boolean comparePassword(String oldpwd, String newpwd) {
+
+        return BCrypt.checkpw(newpwd, oldpwd);
     }
 
     @Override
