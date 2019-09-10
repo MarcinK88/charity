@@ -48,6 +48,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void update(User user, String username) {
+
+        System.out.println("old username: " + username);
+        System.out.println("found user: " + userRepository.findByUsername(username).getUsername());
+        user.setPassword(userRepository.findByUsername(username).getPassword());
+        user.setConfirmPassword(userRepository.findByUsername(username).getConfirmPassword());
+
+        userRepository.save(user);
+    }
+
+    @Override
     public User newUser() {
         return new User();
     }

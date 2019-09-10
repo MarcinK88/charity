@@ -66,18 +66,27 @@ public class UserController {
         if (result.hasErrors()) {
             return "password-change";
         } else if(!userService.comparePassword(userService.loadUserByUsername(user.getUsername()).getPassword(), oldpwd)) {
-
-
             model.addAttribute("iscorrectpassword", "hasło niepoprawne");
             return "password-change";
         } else {
-
             userService.save(user);
-
             return "redirect:/profile";
         }
-
     }
 
+    @GetMapping("/edituser")
+    public String editUser(Model model, Principal principal){
 
+        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+
+        return "user-edit";
+    }
+
+    @PostMapping("/edituser")
+    public String editUserPost(@ModelAttribute("user") User user, Principal principal){
+
+        System.out.println("PRINCIPAL: " + principal.getName());
+        userService.update(user, principal.getName());
+        return "redirect:/profile";
+    }
 }

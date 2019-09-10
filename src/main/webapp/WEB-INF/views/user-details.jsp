@@ -31,7 +31,7 @@
                         <h4>ilość przekazanych worków</h4>
                         <span class="title">${donationQuantity}</span>
                     </li>
-                    <a href="#" class="btn btn--without-border">Zmień dane</a>
+                    <a href="/edituser" class="btn btn--without-border">Zmień dane</a>
                     <a href="/password" class="btn btn--without-border">Zmień hasło</a>
                 </ul>
                 </h1>
