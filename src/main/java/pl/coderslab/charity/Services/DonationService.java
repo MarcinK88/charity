@@ -6,6 +6,5 @@ public interface DonationService {
 
     void save(Donation donation);
     Long getQuantityDonations();
-
-
+    Long getQuantityUserDonations(String username);
 }

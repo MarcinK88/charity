@@ -32,7 +32,17 @@ public class DonationServiceImpl implements DonationService {
         } else {
             return 0L;
         }
+    }
 
+    @Override
+    public Long getQuantityUserDonations(String username) {
 
+        Long quantity = donationRepository.getQuantityUserDonations(username);
+
+        if(quantity!=null){
+            return quantity;
+        } else {
+            return 0L;
+        }
     }
 }
