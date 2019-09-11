@@ -40,4 +40,24 @@ public class AdminController {
 
         return "sbadmin";
     }
+
+    @GetMapping("/admin/users")
+    public String adminUsers() {
+        return "admin-users";
+    }
+
+    @GetMapping("/admin/admins")
+    public String adminAdmins() {
+        return "admin-admins";
+    }
+
+    @GetMapping("/admin/institutions")
+    public String adminInstitutions() {
+        return "admin-institutions";
+    }
+
+    @GetMapping("/admin/donations")
+    public String adminDonations() {
+        return "admin-donations";
+    }
 }
