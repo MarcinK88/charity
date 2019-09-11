@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import pl.coderslab.charity.Services.MySimpleUrlAuthenticationSuccessHandler;
 
 import javax.sql.DataSource;
 
@@ -30,6 +33,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 
+    @Bean("authenticationManager")
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -40,6 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new MySimpleUrlAuthenticationSuccessHandler();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -48,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/register","/login", "/loginAction", "/resources/css/**", "/resources/js/**", "/resources/images/**")
                     .permitAll()
                 .antMatchers("/admin/**")
-                    .access("hasRole('ADMIN')")
+                    .access("hasAuthority('ADMIN')")
                 .anyRequest()
                     .authenticated()
                 .and()
@@ -58,13 +72,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .failureUrl("/login?error")
                         .usernameParameter("username")
                         .passwordParameter("password")
+                        .successHandler(myAuthenticationSuccessHandler())
                 .and()
                     .logout()
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
                 .and()
                     .exceptionHandling()
-                        .accessDeniedPage("/403")
+                        .accessDeniedPage("/login")
                 .and()
                     .csrf()
                         .disable();
@@ -73,3 +88,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 //https://www.baeldung.com/spring-security-authentication-with-a-database
+//https://www.baeldung.com/spring_redirect_after_login

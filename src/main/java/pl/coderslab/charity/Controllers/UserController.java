@@ -40,6 +40,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "register";
         }
+
         userService.save(newuser);
 
         return "redirect:/";
@@ -49,13 +50,13 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model, Principal principal) {
 
-        model.addAttribute("donationQuantity", donationService.getQuantityUserDonations(userService.loadUserByUsername(principal.getName())));
+        model.addAttribute("donationQuantity", donationService.getQuantityUserDonations(userService.find(principal.getName())));
         return "user-details";
     }
 
     @GetMapping("/password")
     public String changePassword(Model model, Principal principal) {
-        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        model.addAttribute("user", userService.find(principal.getName()));
         model.addAttribute("iscorrectpassword","");
         return "password-change";
     }
@@ -65,7 +66,7 @@ public class UserController {
 
         if (result.hasErrors()) {
             return "password-change";
-        } else if(!userService.comparePassword(userService.loadUserByUsername(user.getUsername()).getPassword(), oldpwd)) {
+        } else if(!userService.comparePassword(userService.find(user.getUsername()).getPassword(), oldpwd)) {
             model.addAttribute("iscorrectpassword", "hasło niepoprawne");
             return "password-change";
         } else {
@@ -77,8 +78,9 @@ public class UserController {
     @GetMapping("/edituser")
     public String editUser(Model model, Principal principal){
 
-        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
+        model.addAttribute("user", userService.find(principal.getName()));
 
+        System.out.println("USER ROLE: " + userService.find(principal.getName()).getUserRoles());
         return "user-edit";
     }
 
