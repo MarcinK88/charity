@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/register","/login", "/loginAction", "/resources/css/**", "/resources/js/**", "/resources/images/**")
                     .permitAll()
                 .antMatchers("/admin/**")
-                    .access("hasRole('ADMIN')")
+                    .access("hasAuthority('ADMIN')")
                 .anyRequest()
                     .authenticated()
                 .and()
@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .logoutSuccessUrl("/login?logout")
                 .and()
                     .exceptionHandling()
-                        .accessDeniedPage("/403")
+                        .accessDeniedPage("/login")
                 .and()
                     .csrf()
                         .disable();

@@ -57,4 +57,9 @@ public class User {
         this.surname = surname;
 
     }
+
+    public String getUserRolesName() {
+        return userRoles.getRole();
+    }
+
 }
