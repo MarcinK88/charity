@@ -19,4 +19,14 @@ public class UserRolesServiceImpl implements UserRolesService {
     public UserRoles getUserRole(int id) {
         return userRolesRepository.getOne(id);
     }
+
+    @Override
+    public int getId(String role) {
+        return userRolesRepository.getId(role);
+    }
+
+    @Override
+    public UserRoles findByRole(String role) {
+        return userRolesRepository.findByRole(role);
+    }
 }
