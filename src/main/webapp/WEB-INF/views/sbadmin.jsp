@@ -1,4 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +25,7 @@
 
 
     </head>
+    <sec:authentication var="user" property="principal" />
 
     <body id="page-top">
 
@@ -32,7 +36,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
     <div class="sidebar-brand-icon rotate-n-15">
     <i class="fas fa-laugh-wink"></i>
     </div>
@@ -56,6 +60,30 @@
     <div class="sidebar-heading">
     Interface
     </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-user-circle"></i>
+                <span>Użytkownicy</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Administratorzy</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-building"></i>
+                <span>Instytucje</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-gift"></i>
+                <span>Dary</span></a>
+        </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -301,25 +329,17 @@ Spending Alert: We've noticed unusually high spending for your account.
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><i class="fas fa-fw fa-user-circle"></i>${user.name}</span>
     </a>
     <!-- Dropdown - User Information -->
     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-    <a class="dropdown-item" href="#">
+    <a class="dropdown-item" href="/profile">
     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 Profile
 </a>
-<a class="dropdown-item" href="#">
-    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-Settings
-</a>
-<a class="dropdown-item" href="#">
-    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-Activity Log
-</a>
+
 <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+    <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 Logout
 </a>
@@ -349,7 +369,7 @@ Logout
     <div class="card-body">
     <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Użytkowników</div>
     <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
 </div>
 <div class="col-auto">
@@ -366,7 +386,7 @@ Logout
     <div class="card-body">
     <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Administratorów</div>
     <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
 </div>
 <div class="col-auto">
@@ -383,10 +403,10 @@ Logout
     <div class="card-body">
     <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Instytucji</div>
     <div class="row no-gutters align-items-center">
     <div class="col-auto">
-    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${quantityInstitutions}</div>
     </div>
     <div class="col">
     <div class="progress progress-sm mr-2">
@@ -409,8 +429,8 @@ Logout
     <div class="card-body">
     <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Darów</div>
+<div class="h5 mb-0 font-weight-bold text-gray-800">${quantityDonations}</div>
     </div>
     <div class="col-auto">
     <i class="fas fa-comments fa-2x text-gray-300"></i>
