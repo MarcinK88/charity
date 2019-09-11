@@ -53,6 +53,7 @@ public class AdminController {
 
     @GetMapping("/admin/institutions")
     public String adminInstitutions() {
+
         return "admin-institutions";
     }
 
