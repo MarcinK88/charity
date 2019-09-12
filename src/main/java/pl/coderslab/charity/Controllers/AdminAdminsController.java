@@ -42,7 +42,10 @@ public class AdminAdminsController {
     }
 
     @GetMapping("/admin/admins")
-    public String adminAdmins() {
+    public String adminAdmins(Model model) {
+
+        model.addAttribute("admins", userService.findAllByUserRoles(userRolesService.findByRole("ADMIN")));
+
         return "admin-admins";
     }
 
