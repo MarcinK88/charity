@@ -14,6 +14,8 @@ import pl.coderslab.charity.Repositories.UserRepository;
 import pl.coderslab.charity.Repositories.UserRolesRepository;
 import pl.coderslab.charity.Services.UserService;
 
+import java.util.List;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -98,5 +100,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Long quantityUsers(UserRoles userRoles) {
         return userRepository.countUsers(userRoles);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public List<User> findAllByUserRoles(UserRoles role) {
+        return userRepository.findAllByUserRoles(role);
     }
 }

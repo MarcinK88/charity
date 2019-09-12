@@ -4,6 +4,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Models.UserRoles;
 
+import java.util.List;
+
 public interface UserService {
 
     void saveNewUser(User user);
@@ -17,4 +19,8 @@ public interface UserService {
     User find(String username);
 
     Long quantityUsers(UserRoles userRoles);
+
+    List<User> findAll();
+
+    List<User> findAllByUserRoles(UserRoles role);
 }
