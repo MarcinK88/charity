@@ -183,10 +183,6 @@
     <script src="<c:url value="resources/js/Chart.min.js"/>"></script>
 
 
-    <!-- Page level custom scripts -->
-    <script src="<c:url value="resources/js/chart-area-demo.js"/>"></script>
-    <script src="<c:url value="resources/js/chart-pie-demo.js"/>"></script>
-
 
     </body>
 

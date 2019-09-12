@@ -14,7 +14,7 @@ import pl.coderslab.charity.Services.UserRolesService;
 import pl.coderslab.charity.Services.UserService;
 
 @Controller
-public class AdminController {
+public class AdminInstitutionsController {
 
     private final InstitutionService institutionService;
     private final DonationService donationService;
@@ -23,10 +23,10 @@ public class AdminController {
 
 
     @Autowired
-    public AdminController(InstitutionService institutionService,
-                           DonationService donationService,
-                           UserService userService,
-                           UserRolesService userRolesService) {
+    public AdminInstitutionsController(InstitutionService institutionService,
+                                       DonationService donationService,
+                                       UserService userService,
+                                       UserRolesService userRolesService) {
 
         this.institutionService = institutionService;
         this.donationService = donationService;
@@ -34,26 +34,6 @@ public class AdminController {
         this.userRolesService = userRolesService;
     }
 
-    @GetMapping("/admin")
-    public String admin(Model model){
-
-        model.addAttribute("quantityDonations", donationService.getQuantityDonations());
-        model.addAttribute("quantityInstitutions", institutionService.quantityInstitutions());
-        model.addAttribute("quantityUsers", userService.quantityUsers(userRolesService.findByRole("USER")));
-        model.addAttribute("quantityAdministrators", userService.quantityUsers(userRolesService.findByRole("ADMIN")));
-
-        return "sbadmin";
-    }
-
-    @GetMapping("/admin/users")
-    public String adminUsers() {
-        return "admin-users";
-    }
-
-    @GetMapping("/admin/admins")
-    public String adminAdmins() {
-        return "admin-admins";
-    }
 
     @GetMapping("/admin/institutions")
     public String adminInstitutions(Model model) {
@@ -110,8 +90,5 @@ public class AdminController {
         return "redirect:/admin/institutions";
     }
 
-    @GetMapping("/admin/donations")
-    public String adminDonations() {
-        return "admin-donations";
-    }
+
 }

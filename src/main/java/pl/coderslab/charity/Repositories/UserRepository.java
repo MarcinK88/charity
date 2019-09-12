@@ -6,6 +6,8 @@ import org.springframework.data.repository.query.Param;
 import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Models.UserRoles;
 
+import java.util.List;
+
 public interface UserRepository extends JpaRepository<User,Long> {
 
     User findByUsername(String username);
@@ -15,4 +17,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     @Query("select count(u) from User u WHERE u.userRoles = ?1")
     Long countUsers(UserRoles userRoles);
+
+    List<User> findAllByUserRoles(UserRoles role);
+
+    @Query("SELECT u from User u where u.id = ?1")
+    User findById(long id);
 }
