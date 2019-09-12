@@ -52,7 +52,9 @@ public class AdminController {
     }
 
     @GetMapping("/admin/institutions")
-    public String adminInstitutions() {
+    public String adminInstitutions(Model model) {
+
+        model.addAttribute("institutions", institutionService.findAll());
 
         return "admin-institutions";
     }
