@@ -80,7 +80,7 @@
                                                 <form:hidden path="id"/>
                                                 <div class="px-sm-5">
                                                     <button type="submit" id="save" name="save" class="btn btn-success btn-user btn-block">Zapisz</button>
-                                                    <a href="/admin/institutions" class="btn btn-secondary btn-user btn-block">
+                                                    <a href="/admin/admins" class="btn btn-secondary btn-user btn-block">
                                                         Anuluj
                                                     </a>
                                                 </div>
