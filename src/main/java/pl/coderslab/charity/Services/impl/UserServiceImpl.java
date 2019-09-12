@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.Models.User;
+import pl.coderslab.charity.Models.UserRoles;
 import pl.coderslab.charity.Repositories.UserRepository;
 import pl.coderslab.charity.Repositories.UserRolesRepository;
 import pl.coderslab.charity.Services.UserService;
@@ -92,5 +93,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User find(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public Long quantityUsers(UserRoles userRoles) {
+        return userRepository.countUsers(userRoles);
     }
 }

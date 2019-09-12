@@ -2,6 +2,7 @@ package pl.coderslab.charity.Services;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.coderslab.charity.Models.User;
+import pl.coderslab.charity.Models.UserRoles;
 
 public interface UserService {
 
@@ -14,4 +15,6 @@ public interface UserService {
     void save(User user);
     boolean comparePassword(String oldpwd, String newpwd);
     User find(String username);
+
+    Long quantityUsers(UserRoles userRoles);
 }
