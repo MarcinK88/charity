@@ -25,4 +25,19 @@ public class InstitutionServiceImpl implements InstitutionService {
     public long quantityInstitutions() {
         return institutionRepository.count();
     }
+
+    @Override
+    public Institution findById(long id) {
+        return institutionRepository.findById(id);
+    }
+
+    @Override
+    public void save(Institution institution) {
+        institutionRepository.save(institution);
+    }
+
+    @Override
+    public void delete(Institution institution) {
+        institutionRepository.delete(institution);
+    }
 }
