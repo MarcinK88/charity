@@ -59,8 +59,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void update(User user, String username) {
 
-        System.out.println("old username: " + username);
-        System.out.println("found user: " + userRepository.findByUsername(username).getUsername());
         user.setPassword(userRepository.findByUsername(username).getPassword());
         user.setConfirmPassword(userRepository.findByUsername(username).getConfirmPassword());
         user.setUserRoles(userRepository.findByUsername(username).getUserRoles());
@@ -110,5 +108,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllByUserRoles(UserRoles role) {
         return userRepository.findAllByUserRoles(role);
+    }
+
+    @Override
+    public User findById(long id) {
+        return userRepository.findById(id);
     }
 }

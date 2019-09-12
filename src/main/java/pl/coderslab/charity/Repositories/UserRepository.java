@@ -19,4 +19,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Long countUsers(UserRoles userRoles);
 
     List<User> findAllByUserRoles(UserRoles role);
+
+    @Query("SELECT u from User u where u.id = ?1")
+    User findById(long id);
 }
