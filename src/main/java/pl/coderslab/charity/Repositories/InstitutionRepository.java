@@ -11,4 +11,7 @@ public interface InstitutionRepository extends JpaRepository<Institution,Long> {
     @Query("SELECT i from Institution i")
     List<Institution> findAll();
 
+    @Query("SELECT i from Institution i where i.id = ?1" )
+    Institution findById(long id);
+
 }

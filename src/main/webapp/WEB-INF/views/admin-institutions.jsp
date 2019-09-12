@@ -84,7 +84,7 @@
                                             <td data-table-header="Name">${institution.name}</td>
                                             <td data-table-header="Descrpition">${institution.description}</td>
                                             <td data-table-header="Delete">
-                                                <a href="#" class="btn btn-info btn-icon-split">
+                                                <a href="/admin/institutions/edit/${institution.id}" class="btn btn-info btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
@@ -92,7 +92,7 @@
                                                 </a>
                                             </td>
                                             <td data-table-header="Delete">
-                                                <a href="#" class="btn btn-danger btn-icon-split">
+                                                <a href="/admin/institutions/delete/${institution.id}" class="btn btn-danger btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
