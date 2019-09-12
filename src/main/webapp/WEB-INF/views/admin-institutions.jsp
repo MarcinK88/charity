@@ -565,35 +565,22 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-<c:set var="context" value="${pageContext.request.contextPath}"/>
 
 
 <!-- Bootstrap core JavaScript-->
-<script src="<c:url value="resources/js/jquery.min.js"/>"></script>
-<script src="<c:url value="resources/js/bootstrap.bundle.min.js"/>"></script>
+<script src="<c:url value="/resources/jquery/jquery.min.js"/>"></script>
+<script src="<c:url value="/resources/booststrap/js/bootstrap.bundle.min.js"/>"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="<c:url value="resources/js/jquery.easing.min.js"/>"></script>
+<script src="<c:url value="/resources/jquery-easing/jquery.easing.min.js"/>"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="<c:url value="resources/js/sb-admin-2.min.js"/>"></script>
+<script src="<c:url value="/resources/js/sb-admin-2.min.js"/>"></script>
 
+<script src="<c:url value="/resources/datatables/jquery.dataTables.min.js"/>"></script>
+<script src="<c:url value="/resources/datatables/dataTables.bootstrap4.min.js"/>"></script>
+<script src="<c:url value="/resources/demo/datatables-demo.js"/>"></script>
 
-<!-- Page level plugins -->
-<script src="<c:url value="resources/js/Chart.min.js"/>"></script>
-
-
-<!-- Page level custom scripts -->
-<script src="<c:url value="resources/js/chart-area-demo.js"/>"></script>
-<script src="<c:url value="resources/js/chart-pie-demo.js"/>"></script>
-
-
-<script src="<c:url value="resources/datatables/jquery.dataTables.min.js"/>"></script>
-<script src="<c:url value="resources/datatables/dataTables.bootstrap4.min.js"/>"></script>
-<script src="<c:url value="resources/datatables/dataTables.bootstrap4.min.js"/>"></script>
-<script src="<c:url value="resources/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
-<script src="<c:url value="resources/jquery/jquery.min.js"/>"></script>
-<script src="<c:url value="resources/jquery-easing/jquery.easing.min.js"/>"></script>
 
 
 </body>
