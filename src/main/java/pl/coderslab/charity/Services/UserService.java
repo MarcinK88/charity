@@ -27,4 +27,6 @@ public interface UserService {
     User findById(long id);
 
     void delete(User user);
+
+    void saveAdmin(User user);
 }
