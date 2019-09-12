@@ -58,7 +58,15 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Lista instytucji</h6>
+
+                        <a href="/admin/institutions/add" class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                            <span class="text">Dodaj nową</span>
+                        </a>
                     </div>
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -103,6 +111,7 @@
                                     </c:forEach>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>

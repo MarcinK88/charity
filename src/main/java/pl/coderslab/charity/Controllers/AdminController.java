@@ -94,6 +94,22 @@ public class AdminController {
         return "redirect:/admin/institutions";
     }
 
+    @GetMapping("/admin/institutions/add")
+    public String addInstitution(Model model) {
+
+        Institution institution = new Institution();
+        model.addAttribute("institution", institution);
+
+        return "admin-institutions-add";
+    }
+
+    @PostMapping("/admin/institutions/add")
+    public String addInstitutionPost(@ModelAttribute Institution institution) {
+
+        institutionService.save(institution);
+        return "redirect:/admin/institutions";
+    }
+
     @GetMapping("/admin/donations")
     public String adminDonations() {
         return "admin-donations";
