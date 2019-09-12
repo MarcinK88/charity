@@ -119,4 +119,17 @@ public class UserServiceImpl implements UserService {
     public void delete(User user) {
         userRepository.delete(user);
     }
+
+    @Override
+    public void saveAdmin(User user) {
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setConfirmPassword(user.getPassword());
+        user.setEnabled(true);
+        user.setUserRoles(userRolesRepository.findByRole("ADMIN"));
+
+        userRepository.save(user);
+    }
 }
