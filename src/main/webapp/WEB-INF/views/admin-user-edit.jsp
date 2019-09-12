@@ -67,7 +67,14 @@
                                                 </div>
                                                 <form:hidden path="password"/>
                                                 <form:hidden path="confirmPassword"/>
-                                                <form:hidden path="enabled"/>
+                                                <div class="form-group">
+                                                <label for="enabled">Aktywny</label>
+                                                <form:select path="enabled" id="enabled" cssClass="form-control">
+                                                    <form:option value="true" />
+                                                    <form:option value="false"/>
+                                                </form:select>
+                                                </div>
+
                                                 <form:hidden path="id"/>
                                                 <input type="hidden" name="oldUsername" id="oldUsername" value="${oldUsername}">
                                                 <div class="px-sm-5">

@@ -58,13 +58,6 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Lista użytkowników</h6>
-
-                        <a href="/admin/users/add" class="btn btn-success btn-icon-split">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-arrow-right"></i>
-                            </span>
-                            <span class="text">Dodaj nowego</span>
-                        </a>
                     </div>
 
                     <div class="card-body">
