@@ -7,6 +7,8 @@ import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Repositories.DonationRepository;
 import pl.coderslab.charity.Services.DonationService;
 
+import java.util.List;
+
 @Service
 public class DonationServiceImpl implements DonationService {
 
@@ -45,6 +47,11 @@ public class DonationServiceImpl implements DonationService {
         } else {
             return 0L;
         }
+    }
+
+    @Override
+    public List<Donation> findAll() {
+        return donationRepository.findAll();
     }
 
 

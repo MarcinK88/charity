@@ -2,6 +2,7 @@ package pl.coderslab.charity.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.coderslab.charity.Services.DonationService;
 import pl.coderslab.charity.Services.InstitutionService;
@@ -30,7 +31,10 @@ public class AdminDonationsController {
     }
 
     @GetMapping("/admin/donations")
-    public String adminDonations() {
+    public String adminDonations(Model model) {
+
+        model.addAttribute("donations", donationService.findAll());
+
         return "admin-donations";
     }
 
