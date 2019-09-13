@@ -16,4 +16,6 @@ public interface DonationService {
     void pickUp(boolean pickedup, long id);
 
     Donation find(int id);
+
+    List<Donation> findAllOfUser(User user);
 }

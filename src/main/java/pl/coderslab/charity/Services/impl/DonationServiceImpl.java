@@ -63,8 +63,11 @@ public class DonationServiceImpl implements DonationService {
     @Override
     public void pickUp(boolean pickedup, long id) {
 
+        Calendar calendar = Calendar.getInstance();
         Donation donation = donationRepository.findById(id);
         donation.setPickedUp(pickedup);
+        donation.setPickupRealDate(calendar.getTime());
+
 
 
         donationRepository.save(donation);
@@ -73,6 +76,11 @@ public class DonationServiceImpl implements DonationService {
     @Override
     public Donation find(int id) {
         return donationRepository.findById(id);
+    }
+
+    @Override
+    public List<Donation> findAllOfUser(User user) {
+        return donationRepository.findAllofUser(user);
     }
 
 
