@@ -59,12 +59,6 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Lista darów</h6>
 
-                        <a href="/admin/donations/add" class="btn btn-success btn-icon-split">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-arrow-right"></i>
-                            </span>
-                            <span class="text">Dodaj nowy</span>
-                        </a>
                     </div>
 
                     <div class="card-body">
@@ -83,7 +77,8 @@
                                     <th title="pickuptime">Czas odbioru</th>
                                     <th title="comment">Komentarz</th>
                                     <th title="phone">Telefon</th>
-                                    <th title="edit">Edytuj</th>
+                                    <th title="pickedup">Odebrane</th>
+                                    <th title="edit">Odbierz</th>
                                     <th title="delete">Usuń</th>
                                 </tr>
                                 </thead>
@@ -100,7 +95,8 @@
                                     <th title="pickuptime">Czas odbioru</th>
                                     <th title="comment">Komentarz</th>
                                     <th title="phone">Telefon</th>
-                                    <th title="edit">Edytuj</th>
+                                    <th title="pickedup">Odebrane</th>
+                                    <th title="edit">Odbierz</th>
                                     <th title="delete">Usuń</th>
                                 </tr>
                                 </tfoot>
@@ -122,12 +118,13 @@
                                         <td data-table-header="pickuptime">${donation.pickUpTime}</td>
                                         <td data-table-header="comment">${donation.pickUpComment}</td>
                                         <td data-table-header="phone">${donation.phone}</td>
+                                        <td data-table-header="phone">${donation.pickedUp}</td>
                                         <td data-table-header="delete">
-                                            <a href="/admin/donations/edit/${donation.id}" class="btn btn-info btn-icon-split">
+                                            <a href="/admin/donations/pickup/${donation.id}" class="btn btn-success btn-icon-split">
                                                     <span class="icon text-white-50">
-                                                        <i class="fas fa-edit"></i>
+                                                        <i class="fas fa-check"></i>
                                                     </span>
-                                                <span class="text">Edytuj</span>
+                                                <span class="text">Odbierz</span>
                                             </a>
                                         </td>
                                         <td data-table-header="edit">

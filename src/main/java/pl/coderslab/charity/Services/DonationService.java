@@ -12,4 +12,8 @@ public interface DonationService {
     Long getQuantityUserDonations(User user);
 
     List<Donation> findAll();
+
+    void pickUp(boolean pickedup, long id);
+
+    Donation find(int id);
 }

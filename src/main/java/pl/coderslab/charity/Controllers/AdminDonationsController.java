@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import pl.coderslab.charity.Services.DonationService;
 import pl.coderslab.charity.Services.InstitutionService;
 import pl.coderslab.charity.Services.UserRolesService;
@@ -36,6 +37,15 @@ public class AdminDonationsController {
         model.addAttribute("donations", donationService.findAll());
 
         return "admin-donations";
+    }
+
+    @GetMapping("admin/donations/pickup/{id}")
+    public String pickup(@PathVariable long id){
+
+        donationService.pickUp(true, id);
+
+        return "redirect:/admin/donations";
+
     }
 
 }

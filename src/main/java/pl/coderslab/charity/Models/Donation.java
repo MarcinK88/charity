@@ -49,10 +49,18 @@ public class Donation {
 
     private String phone;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date recordDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date pickupRealDate;
+
+    private boolean pickedUp;
+
     public Donation() {
     }
 
-    public Donation(int quantity, List<Category> categories, Institution institution, String street, String city, String zipcode, Date pickUpDate, Date pickUpTime, String pickUpComment, String phone, User user) {
+    public Donation(int quantity, List<Category> categories, Institution institution, String street, String city, String zipcode, Date pickUpDate, Date pickUpTime, String pickUpComment, String phone, User user, Date recordDate, Date pickupRealDate, boolean pickedUp) {
         this.quantity = quantity;
         this.categories = categories;
         this.institution = institution;
@@ -64,6 +72,9 @@ public class Donation {
         this.pickUpComment = pickUpComment;
         this.phone = phone;
         this.user = user;
+        this.recordDate = recordDate;
+        this.pickupRealDate = pickupRealDate;
+        this.pickedUp = pickedUp;
     }
 
 
