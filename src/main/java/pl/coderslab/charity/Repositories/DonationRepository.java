@@ -20,4 +20,7 @@ public interface DonationRepository extends JpaRepository<Donation,Long> {
 
     @Query("Select d from Donation d where d.user = ?1")
     List<Donation> findAllofUser(User user);
+
+    @Query("delete from Donation d where d.user = ?1")
+    void deleteByUser(User user);
 }

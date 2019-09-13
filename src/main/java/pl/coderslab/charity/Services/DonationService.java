@@ -18,4 +18,6 @@ public interface DonationService {
     Donation find(int id);
 
     List<Donation> findAllOfUser(User user);
+
+    void deleteUserDonations(User user);
 }

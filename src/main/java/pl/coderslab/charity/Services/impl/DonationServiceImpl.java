@@ -83,5 +83,10 @@ public class DonationServiceImpl implements DonationService {
         return donationRepository.findAllofUser(user);
     }
 
+    @Override
+    public void deleteUserDonations(User user) {
+        donationRepository.deleteByUser(user);
+    }
+
 
 }
