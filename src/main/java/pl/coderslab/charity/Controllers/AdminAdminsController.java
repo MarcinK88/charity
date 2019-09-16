@@ -110,7 +110,7 @@ public class AdminAdminsController {
     public String addInstitutionPost(@ModelAttribute("admin") @Valid User user, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "/admin/admins/add";
+            return "admin-admins-add";
         }
 
         userService.saveAdmin(user);
