@@ -20,4 +20,6 @@ public interface DonationService {
     List<Donation> findAllOfUser(User user);
 
     void deleteUserDonations(User user);
+
+    void delete(Donation donation);
 }

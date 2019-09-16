@@ -88,5 +88,10 @@ public class DonationServiceImpl implements DonationService {
         donationRepository.deleteByUser(user);
     }
 
+    @Override
+    public void delete(Donation donation) {
+        donationRepository.delete(donation);
+    }
+
 
 }
