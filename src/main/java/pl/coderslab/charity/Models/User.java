@@ -11,8 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 
 @Entity
@@ -28,6 +27,7 @@ public class User {
     private String username;
 
     @NotEmpty(message = "pole nie może byc puste")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "hasło musi mieć co najmniej 8 znaków, małą literę, wielką literę, cyfrę i znak specjalny")
     private String password;
 
     private String name;
