@@ -13,10 +13,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>charity</name>
     <description>Charity project, created with love in CodersLab</description>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>1.8</java.version>
         <spring.security.version>5.1.6.RELEASE</spring.security.version>
+
     </properties>
 
     <dependencies>
@@ -122,6 +124,12 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>2.1.8.RELEASE</version>
         </dependency>
 
         <dependency>
