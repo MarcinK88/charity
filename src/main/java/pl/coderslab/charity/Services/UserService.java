@@ -29,4 +29,6 @@ public interface UserService {
     void delete(User user);
 
     void saveAdmin(User user);
+
+    boolean deleteAdmin(User user, User user1);
 }

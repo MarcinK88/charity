@@ -17,6 +17,7 @@ import pl.coderslab.charity.Services.UserRolesService;
 import pl.coderslab.charity.Services.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class AdminAdminsController {
@@ -81,10 +82,19 @@ public class AdminAdminsController {
     }
 
     @PostMapping("/admin/admins/delete/{id}")
-    public String deleteUserPost(@ModelAttribute User user) {
-        userService.delete(user);
+    public String deleteUserPost(@ModelAttribute User user, Principal principal, Model model) {
 
-        return "redirect:/admin/users";
+        String error = "";
+
+        if(!userService.deleteAdmin(user, userService.find(principal.getName()))) {
+            error = "Nie możesz usunąć swojego konta!";
+            model.addAttribute("error", error);
+        }
+        model.addAttribute("admins", userService.findAllByUserRoles(userRolesService.findByRole("ADMIN")));
+
+        return "admin-admins";
+
+
     }
 
     @GetMapping("/admin/admins/add")
