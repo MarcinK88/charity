@@ -9,7 +9,7 @@ import pl.coderslab.charity.Services.EmailService;
 @Component
 public class EmailServiceImpl implements EmailService {
 
-    public final JavaMailSender emailSender;
+    private JavaMailSender emailSender;
 
     @Autowired
     public EmailServiceImpl(JavaMailSender emailSender) {
@@ -17,7 +17,6 @@ public class EmailServiceImpl implements EmailService {
     }
 
     public void sendContactForm(String name, String surname, String text) {
-        System.setProperty("java.net.preferIPv4Stack" , "true");
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setTo("charity.app11@gmail.com");
@@ -25,6 +24,7 @@ public class EmailServiceImpl implements EmailService {
 
         message.setText(text);
         emailSender.send(message);
+
     }
 
 
