@@ -24,6 +24,7 @@
         </div>
         <div class="form-group">
             <form:input path="username" type="email" name="username" placeholder="Email" />
+            <form:errors path="username" cssClass="error" />
         </div>
         <div class="form-group">
             <form:input path="password" type="password" name="password" placeholder="Hasło" />
