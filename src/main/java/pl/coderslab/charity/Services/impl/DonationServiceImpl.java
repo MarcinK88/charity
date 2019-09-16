@@ -7,6 +7,10 @@ import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Repositories.DonationRepository;
 import pl.coderslab.charity.Services.DonationService;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.List;
+
 @Service
 public class DonationServiceImpl implements DonationService {
 
@@ -20,6 +24,10 @@ public class DonationServiceImpl implements DonationService {
 
     @Override
     public void save(Donation donation) {
+
+        Calendar calendar = Calendar.getInstance();
+        donation.setRecordDate(calendar.getTime());
+        donation.setPickedUp(false);
         donationRepository.save(donation);
     }
 
@@ -45,6 +53,44 @@ public class DonationServiceImpl implements DonationService {
         } else {
             return 0L;
         }
+    }
+
+    @Override
+    public List<Donation> findAll() {
+        return donationRepository.findAll();
+    }
+
+    @Override
+    public void pickUp(boolean pickedup, long id) {
+
+        Calendar calendar = Calendar.getInstance();
+        Donation donation = donationRepository.findById(id);
+        donation.setPickedUp(pickedup);
+        donation.setPickupRealDate(calendar.getTime());
+
+
+
+        donationRepository.save(donation);
+    }
+
+    @Override
+    public Donation find(int id) {
+        return donationRepository.findById(id);
+    }
+
+    @Override
+    public List<Donation> findAllOfUser(User user) {
+        return donationRepository.findAllofUser(user);
+    }
+
+    @Override
+    public void deleteUserDonations(User user) {
+        donationRepository.deleteByUser(user);
+    }
+
+    @Override
+    public void delete(Donation donation) {
+        donationRepository.delete(donation);
     }
 
 

@@ -13,6 +13,13 @@ import pl.coderslab.charity.Services.InstitutionService;
 import pl.coderslab.charity.Services.UserRolesService;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 @Controller
 public class HomeController {
@@ -33,6 +40,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String homeAction(Model model, Principal principal){
+
 
         model.addAttribute("institutions", institutionService.findAll());
         model.addAttribute("quantityDonations", donationService.getQuantityDonations());

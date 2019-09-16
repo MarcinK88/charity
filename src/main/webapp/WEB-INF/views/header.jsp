@@ -13,7 +13,7 @@
                 Witaj ${user.name}
                 <ul class="dropdown">
                     <li><a href="/profile">Profil</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
+                    <li><a href="/mydonations">Moje zbiórki</a></li>
                     <sec:authorize access="hasAuthority('ADMIN')">
                         <li><a href="/admin">Admin panel</a></li>
                     </sec:authorize>

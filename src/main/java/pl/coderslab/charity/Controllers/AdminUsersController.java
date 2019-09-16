@@ -70,7 +70,9 @@ public class AdminUsersController {
 
     @PostMapping("/admin/users/delete/{id}")
     public String deleteUserPost(@ModelAttribute User user) {
+
         userService.delete(user);
+        donationService.deleteUserDonations(user);
 
         return "redirect:/admin/users";
     }

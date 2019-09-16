@@ -91,4 +91,20 @@ public class UserController {
         SecurityContextHolder.clearContext();
         return "redirect:/login";
     }
+
+    @GetMapping("/mydonations")
+    public String myDonations(Model model, Principal principal) {
+
+        model.addAttribute("donations", donationService.findAllOfUser(userService.find(principal.getName())));
+
+        return "user-donations";
+    }
+
+    @GetMapping("/mydonations/details/{id}")
+    public String myDonationsDetails(@PathVariable int id, Model model) {
+
+        model.addAttribute("donation", donationService.find(id));
+
+        return "user-donations-details";
+    }
 }
