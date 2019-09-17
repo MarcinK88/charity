@@ -65,16 +65,18 @@
                                                 <div class="form-group">
                                                     <label for="username">Email</label>
                                                     <form:input path="username" id="username" name="username" type="email" placeholder="Email" cssClass="form-control form-control-user" />
+                                                    <form:errors path="username"  />
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password">Hasło</label>
                                                     <form:input path="password" id="password" name="password" type="password" placeholder="Hasło" cssClass="form-control form-control-user" />
-                                                    <form:errors path="password" cssClass="error" />
+                                                    <form:errors path="password"  />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="confirmPassword">Powtórz hasło</label>
                                                     <form:input path="confirmPassword" id="confirmPassword" name="confirmPassword" type="password" placeholder="Powtórz hasło" cssClass="form-control form-control-user" />
-                                                    <form:errors path="confirmPassword" cssClass="error"/>
+                                                    <form:errors path="confirmPassword" />
                                                 </div>
                                                 <form:hidden path="enabled"/>
                                                 <form:hidden path="id"/>
