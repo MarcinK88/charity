@@ -53,6 +53,7 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Administratorzy</h1>
                 <p class="mb-4">Zarządzaj administratorami</p>
+                <div class="bg-gradient-danger text-gray-100">${error}</div>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">

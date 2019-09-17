@@ -1,6 +1,7 @@
 package pl.coderslab.charity.Services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -152,7 +153,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(User user) {
-        userRepository.delete(user);
+            userRepository.delete(user);
     }
 
     @Override
@@ -168,7 +169,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @Override
+
     public void enableByToken(String token) {
 
         VerificationToken verificationToken = tokenRepository.findByToken(token);
@@ -178,6 +179,14 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(true);
 
         userRepository.save(user);
+
+    public boolean deleteAdmin(User user, User userToCompare) {
+        if (user.getId() == userToCompare.getId()){
+            return false;
+        } else {
+            userRepository.delete(user);
+            return true;
+        }
     }
 
     @Override

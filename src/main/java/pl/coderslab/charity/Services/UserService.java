@@ -34,4 +34,8 @@ public interface UserService {
 
     void createPasswordResetTokenForUser(User user);
     void register(User user);
+
+
+    boolean deleteAdmin(User user, User user1);
+
 }
