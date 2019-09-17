@@ -14,19 +14,15 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <section class="login-page">
-    <h2>Zaloguj się</h2>
-    <form method="post" action="/login">
+    <h2>Zresetuj hasło</h2>
+    <form method="post" action="/resetpassword">
         <div class="form-group">
             <input type="text" name="username" id="username" placeholder="Email" />
         </div>
-        <div class="form-group">
-            <input type="password" name="password" id="password" placeholder="Hasło" />
-            <a href="/resetpassword" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
-        </div>
 
         <div class="form-group form-group--buttons">
-            <a href="/register" class="btn btn--without-border">Załóż konto</a>
-            <button class="btn" type="submit">Zaloguj się</button>
+            <button class="btn" type="submit">Resetuj</button>
+
         </div>
     </form>
 </section>
