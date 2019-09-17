@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -28,11 +29,11 @@
                         <span class="title">${user.username}</span>
                     </li>
                     <li>
-                        <h4>ilość przekazanych worków</h4>
+                        <h4><spring:message code="profile.quantity" text="default"/></h4>
                         <span class="title">${donationQuantity}</span>
                     </li>
-                    <a href="/edituser" class="btn btn--without-border">Zmień dane</a>
-                    <a href="/password" class="btn btn--without-border">Zmień hasło</a>
+                    <a href="/edituser" class="btn btn--without-border"><spring:message code="profile.change" text="default"/></a>
+                    <a href="/password" class="btn btn--without-border"><spring:message code="profile.changepwd" text="default"/></a>
                 </ul>
                 </h1>
             </div>

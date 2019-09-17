@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -16,18 +17,19 @@
 <sec:authentication var="user" property="principal" />
 
 <jsp:include page="header.jsp"></jsp:include>
-
+<spring:message code="register.name" var="name"/>
+<spring:message code="register.surname" var="surname"/>
 <section class="login-page">
-    <h2>Zmień dane</h2>
+    <h2><spring:message code="profile.change" text="default"/></h2>
     <form:form method="post" modelAttribute="user">
         <div class="form-group">
             <div class="form-group form-group--inline">
-            <label>Imię <form:input path="name" id="name" type="text" name="name" placeholder="Imię" /></label>
+            <label><spring:message code="edituser.name" text="default"/> <form:input path="name" id="name" type="text" name="name" placeholder='${name}' /></label>
             </div>
         </div>
         <div class="form-group">
             <div class="form-group form-group--inline">
-                <label>Nazwisko <form:input path="surname" id="surname" type="text" name="surname" placeholder="Nazwisko" /></label>
+                <label><spring:message code="edituser.surname" text="default"/> <form:input path="surname" id="surname" type="text" name="surname" placeholder='${surname}' /></label>
             </div>
         </div>
         <div class="form-group">
@@ -40,8 +42,8 @@
         <form:hidden path="id"/>
 
         <div class="form-group form-group--buttons">
-            <a href="/profile" class="btn btn--without-border">Anuluj</a>
-            <form:button class="btn" type="submit">Zapisz</form:button>
+            <a href="/profile" class="btn btn--without-border"><spring:message code="edituser.cancel" text="default"/></a>
+            <form:button class="btn" type="submit"><spring:message code="edituser.save" text="default"/></form:button>
         </div>
     </form:form>
 </section>
