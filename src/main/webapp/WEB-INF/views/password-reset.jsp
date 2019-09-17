@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -14,14 +15,14 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <section class="login-page">
-    <h2>Zresetuj hasło</h2>
+    <h2><spring:message code="resetpwd.reset" text="default"/></h2>
     <form method="post" action="/resetpassword">
         <div class="form-group">
             <input type="text" name="username" id="username" placeholder="Email" />
         </div>
 
         <div class="form-group form-group--buttons">
-            <button class="btn" type="submit">Resetuj</button>
+            <button class="btn" type="submit"><spring:message code="resetpwd.res" text="default"/></button>
 
         </div>
     </form>

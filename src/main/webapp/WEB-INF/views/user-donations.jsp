@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -18,7 +19,7 @@
 
 <section class="login-page">
     <div class="details-container">
-        <h2>Twoje dary</h2>
+        <h2><spring:message code="yourdonations" text="default"/></h2>
         <div class="summary">
             <div class="form-section">
                 <h1>

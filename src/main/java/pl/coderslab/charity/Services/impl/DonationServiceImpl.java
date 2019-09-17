@@ -10,6 +10,7 @@ import pl.coderslab.charity.Services.DonationService;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 @Service
 public class DonationServiceImpl implements DonationService {
@@ -26,6 +27,7 @@ public class DonationServiceImpl implements DonationService {
     public void save(Donation donation) {
 
         Calendar calendar = Calendar.getInstance();
+//        calendar.setTimeZone(TimeZone.getTimeZone("Europe/Warsaw"));
         donation.setRecordDate(calendar.getTime());
         donation.setPickedUp(false);
         donationRepository.save(donation);

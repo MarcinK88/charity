@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -77,6 +78,11 @@ public class Donation {
         this.pickedUp = pickedUp;
     }
 
-
+    public void setPickUpDate(Date pickUpDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(pickUpDate);
+        calendar.set(Calendar.HOUR_OF_DAY, 12);
+        this.pickUpDate = calendar.getTime();
+    }
 }
 

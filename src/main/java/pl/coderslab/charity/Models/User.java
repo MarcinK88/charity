@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 
 @Entity
 @Data
-@FieldMatch(first = "password", second = "confirmPassword", message = "Pola musza być takie same")
+@FieldMatch(first = "password", second = "confirmPassword", message = "{validation.samepasswords}")
 public class User {
 
 
@@ -24,11 +24,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Pattern(regexp = "[_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.([a-zA-Z]{2,}){1}", message = "podaj prawidłowy adres e-mail")
+    @Pattern(regexp = "[_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.([a-zA-Z]{2,}){1}", message = "{validation.correctmail}")
     private String username;
 
-    @NotEmpty(message = "pole nie może byc puste")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "hasło musi mieć co najmniej 8 znaków, małą literę, wielką literę, cyfrę i znak specjalny")
+    @NotEmpty(message = "{validation.emptyfield}")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "{validation.correctpassword}")
     private String password;
 
     private String name;

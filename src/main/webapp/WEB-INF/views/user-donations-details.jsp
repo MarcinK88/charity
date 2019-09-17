@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -16,20 +17,20 @@
 
 <section class="login-page">
     <div class="details-container">
-        <h2>Szczegóły zbiórki</h2>
+        <h2><spring:message code="donationdetails.details" text="default"/></h2>
         <div class="summary">
             <div class="form-section">
                 <h1>
                     <table class="table-striped" border="1px">
                         <thead>
-                            <th>Instytucja</th>
-                            <th>Ilość</th>
-                            <th>Kategorie</th>
-                            <th>Adres odbioru</th>
-                            <th>Data odbioru</th>
-                            <th>telefon</th>
-                            <th>Komentarz</th>
-                            <th>Czy odebrane</th>
+                            <th><spring:message code="donationdetails.institution" text="default"/></th>
+                            <th><spring:message code="donationdetails.quantity" text="default"/></th>
+                            <th><spring:message code="donationdetails.categories" text="default"/></th>
+                            <th><spring:message code="donationdetails.address" text="default"/></th>
+                            <th><spring:message code="donationdetails.pickupdate" text="default"/></th>
+                            <th><spring:message code="donationdetails.phone" text="default"/></th>
+                            <th><spring:message code="donationdetails.comment" text="default"/></th>
+                            <th><spring:message code="donationdetails.ispicked" text="default"/></th>
                         </thead>
                         <tbody>
                         <tr>

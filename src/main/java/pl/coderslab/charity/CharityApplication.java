@@ -12,7 +12,7 @@ public class CharityApplication {
 
     @PostConstruct
     void started() {
-        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Warsaw"));
     }
     public static void main(String[] args) {
         SpringApplication.run(CharityApplication.class, args);
