@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Models.UserRoles;
+import pl.coderslab.charity.Models.VerificationToken;
 import pl.coderslab.charity.Repositories.UserRepository;
 import pl.coderslab.charity.Repositories.UserRolesRepository;
 import pl.coderslab.charity.Repositories.VerificationTokenRepository;
@@ -145,6 +146,18 @@ public class UserServiceImpl implements UserService {
         user.setConfirmPassword(user.getPassword());
         user.setEnabled(true);
         user.setUserRoles(userRolesRepository.findByRole("ADMIN"));
+
+        userRepository.save(user);
+    }
+
+    @Override
+    public void enableByToken(String token) {
+
+        VerificationToken verificationToken = tokenRepository.findByToken(token);
+
+        User user = userRepository.findById(verificationToken.getUser().getId());
+
+        user.setEnabled(true);
 
         userRepository.save(user);
     }

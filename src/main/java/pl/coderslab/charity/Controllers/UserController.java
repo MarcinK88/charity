@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.Models.User;
+import pl.coderslab.charity.Repositories.VerificationTokenRepository;
 import pl.coderslab.charity.Services.DonationService;
 import pl.coderslab.charity.Services.UserService;
+import pl.coderslab.charity.Services.VerificationTokenService;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -111,7 +113,7 @@ public class UserController {
     @GetMapping("/confirmRegister")
     public String confirmRegister(@RequestParam("token") String token) {
 
-        
+        userService.enableByToken(token);
 
         return "register-confirm";
     }
