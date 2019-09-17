@@ -39,27 +39,15 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String homeAction(Model model, Principal principal){
+    public String homeAction(Model model){
 
 
         model.addAttribute("institutions", institutionService.findAll());
         model.addAttribute("quantityDonations", donationService.getQuantityDonations());
         model.addAttribute("quantityInstitutions", institutionService.quantityInstitutions());
 
-//        if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString().contains("ADMIN")) {
-//            return "redirect:/admin";
-//        } else {
             return "index";
-//        }
-    }
 
-//    @PostMapping("/login")
-//    public String login() {
-//        if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString().contains("ADMIN")) {
-//            return "redirect:/admin";
-//        } else {
-//            return "index";
-//        }
-//    }
+    }
 
 }

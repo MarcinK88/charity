@@ -11,9 +11,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Models.UserRoles;
+import pl.coderslab.charity.Models.VerificationToken;
 import pl.coderslab.charity.Repositories.UserRepository;
 import pl.coderslab.charity.Repositories.UserRolesRepository;
+import pl.coderslab.charity.Repositories.VerificationTokenRepository;
+import pl.coderslab.charity.Services.EmailService;
 import pl.coderslab.charity.Services.UserService;
+import pl.coderslab.charity.Services.VerificationTokenService;
 
 import java.util.List;
 
@@ -25,10 +29,19 @@ public class UserServiceImpl implements UserService {
 
     private final UserRolesRepository userRolesRepository;
 
+    private final EmailService emailService;
+
+    private final VerificationTokenService tokenService;
+
+    private final VerificationTokenRepository tokenRepository;
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, UserRolesRepository userRolesRepository) {
+    public UserServiceImpl(UserRepository userRepository, UserRolesRepository userRolesRepository, EmailService emailService, VerificationTokenService tokenService, VerificationTokenRepository tokenRepository) {
         this.userRepository = userRepository;
         this.userRolesRepository = userRolesRepository;
+        this.emailService = emailService;
+        this.tokenService = tokenService;
+        this.tokenRepository = tokenRepository;
     }
 
     @Override
@@ -46,9 +59,13 @@ public class UserServiceImpl implements UserService {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setConfirmPassword(user.getPassword());
-        user.setEnabled(true);
+        user.setEnabled(false);
         user.setUserRoles(userRolesRepository.getOne(2));
         userRepository.save(user);
+
+        tokenService.setToken(user);
+        emailService.sendActivationMail(user, tokenRepository.getByUser(user));
+
     }
 
     @Override
@@ -134,7 +151,17 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @Override
+
+    public void enableByToken(String token) {
+
+        VerificationToken verificationToken = tokenRepository.findByToken(token);
+
+        User user = userRepository.findById(verificationToken.getUser().getId());
+
+        user.setEnabled(true);
+
+        userRepository.save(user);
+
     public boolean deleteAdmin(User user, User userToCompare) {
         if (user.getId() == userToCompare.getId()){
             return false;

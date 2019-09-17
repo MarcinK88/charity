@@ -52,7 +52,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.confirmPassword = confirmPassword;
-        this.enabled = enabled;
+        this.enabled = false;
         this.userRoles = userRoles;
         this.name = name;
         this.surname = surname;

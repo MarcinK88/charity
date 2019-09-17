@@ -30,5 +30,7 @@ public interface UserService {
 
     void saveAdmin(User user);
 
+
     boolean deleteAdmin(User user, User user1);
+
 }
