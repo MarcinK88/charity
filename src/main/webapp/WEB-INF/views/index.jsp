@@ -16,6 +16,7 @@
 <body>
 
 <jsp:include page="header-main-page.jsp"></jsp:include>
+
 <div class="slogan container container--90">
     <div class="slogan--item">
         <h1>

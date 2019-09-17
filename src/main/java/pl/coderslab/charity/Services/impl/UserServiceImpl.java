@@ -179,6 +179,7 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(true);
 
         userRepository.save(user);
+    }
 
     public boolean deleteAdmin(User user, User userToCompare) {
         if (user.getId() == userToCompare.getId()){

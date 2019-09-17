@@ -49,5 +49,8 @@ public class HomeController {
             return "index";
 
     }
-
+    @GetMapping("/international")
+    public String getInternationalPage() {
+        return "international";
+    }
 }

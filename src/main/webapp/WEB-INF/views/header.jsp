@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header>
     <sec:authentication var="user" property="principal" />
@@ -10,7 +11,7 @@
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <li class="logged-user">
-                Witaj ${user.name}
+                <spring:message code="hello" text="default"/> ${user.name}
                 <ul class="dropdown">
                     <li><a href="/profile">Profil</a></li>
                     <li><a href="/mydonations">Moje zbiórki</a></li>
@@ -20,6 +21,21 @@
                     <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
+            <li class="logged-user">
+                <spring:message code="lang.change" text="default"/>
+                <ul class="dropdown">
+                    <li><a href="/?lang=pl"><spring:message code="lang.pl" text="default"/>
+                    </a></li>
+                    <li><a href="/?lang=en"><spring:message code="lang.en" text="default"/></a></li>
+                </ul>
+            </li>
+
+
+
+
+
+
+
         </sec:authorize>
     </ul>
 
