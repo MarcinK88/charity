@@ -107,4 +107,12 @@ public class UserController {
 
         return "user-donations-details";
     }
+
+    @GetMapping("/confirmRegister")
+    public String confirmRegister(@RequestParam("token") String token) {
+
+        
+
+        return "register-confirm";
+    }
 }
