@@ -31,4 +31,7 @@ public interface UserService {
     void saveAdmin(User user);
 
     void enableByToken(String token);
+
+    void createPasswordResetTokenForUser(User user);
+    void register(User user);
 }

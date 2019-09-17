@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
+import pl.coderslab.charity.Models.PasswordResetToken;
 import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Models.VerificationToken;
 import pl.coderslab.charity.Services.EmailService;
@@ -38,6 +39,21 @@ public class EmailServiceImpl implements EmailService {
         message.setSubject("Account activation");
 
         String text = "http://localhost:8080/confirmRegister?token=" + token.getToken();
+        message.setText(text);
+
+        emailSender.send(message);
+    }
+
+    @Override
+    public void sendPasswordResetLink(User user, PasswordResetToken byUser) {
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(user.getUsername());
+
+        message.setSubject("Password reset");
+
+        String text = "http://localhost:8080/passwordreset?token=" + byUser.getToken();
+
         message.setText(text);
 
         emailSender.send(message);

@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.charity.Models.PasswordResetToken;
 import pl.coderslab.charity.Models.User;
+import pl.coderslab.charity.Repositories.PasswordResetTokenRepository;
 import pl.coderslab.charity.Repositories.VerificationTokenRepository;
 import pl.coderslab.charity.Services.DonationService;
+import pl.coderslab.charity.Services.EmailService;
 import pl.coderslab.charity.Services.UserService;
 import pl.coderslab.charity.Services.VerificationTokenService;
 
@@ -22,11 +25,15 @@ public class UserController {
     private final UserService userService;
 
     private final DonationService donationService;
+    private final EmailService emailService;
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
 
     @Autowired
-    public UserController(UserService userService, DonationService donationService) {
+    public UserController(UserService userService, DonationService donationService, EmailService emailService, PasswordResetTokenRepository passwordResetTokenRepository) {
         this.userService = userService;
         this.donationService = donationService;
+        this.emailService = emailService;
+        this.passwordResetTokenRepository = passwordResetTokenRepository;
     }
 
     @GetMapping("/register")
@@ -43,7 +50,7 @@ public class UserController {
             return "register";
         }
 
-        userService.save(newuser);
+        userService.register(newuser);
 
         return "redirect:/";
 
@@ -117,4 +124,56 @@ public class UserController {
 
         return "register-confirm";
     }
+
+    @GetMapping("/resetpassword")
+    public String resetPassword() {
+
+        return "password-reset";
+    }
+
+    @PostMapping("/resetpassword")
+    public String resetPasswordPost(@ModelAttribute("username") String username){
+
+        User user = userService.find(username);
+
+        if (user == null){
+            return "user-not-found";
+        } else {
+
+
+            userService.createPasswordResetTokenForUser(user);
+            emailService.sendPasswordResetLink(user,passwordResetTokenRepository.findByUser(user));
+
+            return "user-found-reset-password";
+        }
+
+    }
+
+
+    @GetMapping("/passwordreset")
+    public String passwordReset(@RequestParam("token") String token, Model model){
+
+        PasswordResetToken passwordResetToken = passwordResetTokenRepository.findByToken(token);
+
+        User user = passwordResetToken.getUser();
+
+        model.addAttribute("user", user);
+
+        return "password-reset-by-mail";
+    }
+
+    @PostMapping("/passwordreset")
+    public String passwordResetPost(@ModelAttribute("user") @Valid User user, BindingResult result){
+
+        if (result.hasErrors()) {
+            return "password-reset-by-mail";
+        } else {
+            userService.save(user);
+            passwordResetTokenRepository.delete(passwordResetTokenRepository.findByUser(user));
+            return "password-change-confirm";
+        }
+    }
 }
+
+//https://www.baeldung.com/registration-verify-user-by-email
+//https://www.baeldung.com/spring-security-registration-i-forgot-my-password

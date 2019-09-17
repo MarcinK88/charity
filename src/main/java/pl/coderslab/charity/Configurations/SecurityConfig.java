@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/resources/css/fontawesome/css/**")
                     .permitAll()
-                .antMatchers("/", "/confirmRegister", "/contact", "/register","/login", "/loginAction", "/resources/css/**", "/resources/js/**", "/resources/images/**","/resources/fontawesome/**")
+                .antMatchers("/", "/passwordreset", "/confirmRegister", "/resetpassword", "/contact", "/register","/login", "/loginAction", "/resources/css/**", "/resources/js/**", "/resources/images/**","/resources/fontawesome/**")
                     .permitAll()
                 .antMatchers("/admin/**")
                     .access("hasAuthority('ADMIN')")

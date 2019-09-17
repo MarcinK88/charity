@@ -8,9 +8,11 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.Models.PasswordResetToken;
 import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Models.UserRoles;
 import pl.coderslab.charity.Models.VerificationToken;
+import pl.coderslab.charity.Repositories.PasswordResetTokenRepository;
 import pl.coderslab.charity.Repositories.UserRepository;
 import pl.coderslab.charity.Repositories.UserRolesRepository;
 import pl.coderslab.charity.Repositories.VerificationTokenRepository;
@@ -19,6 +21,7 @@ import pl.coderslab.charity.Services.UserService;
 import pl.coderslab.charity.Services.VerificationTokenService;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -34,13 +37,16 @@ public class UserServiceImpl implements UserService {
 
     private final VerificationTokenRepository tokenRepository;
 
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, UserRolesRepository userRolesRepository, EmailService emailService, VerificationTokenService tokenService, VerificationTokenRepository tokenRepository) {
+    public UserServiceImpl(UserRepository userRepository, UserRolesRepository userRolesRepository, EmailService emailService, VerificationTokenService tokenService, VerificationTokenRepository tokenRepository, PasswordResetTokenRepository passwordResetTokenRepository) {
         this.userRepository = userRepository;
         this.userRolesRepository = userRolesRepository;
         this.emailService = emailService;
         this.tokenService = tokenService;
         this.tokenRepository = tokenRepository;
+        this.passwordResetTokenRepository = passwordResetTokenRepository;
     }
 
     @Override
@@ -52,7 +58,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(User user) {
+    public void register(User user) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -64,6 +70,18 @@ public class UserServiceImpl implements UserService {
 
         tokenService.setToken(user);
         emailService.sendActivationMail(user, tokenRepository.getByUser(user));
+
+    }
+
+    @Override
+    public void save(User user) {
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setConfirmPassword(user.getPassword());
+        user.setEnabled(user.isEnabled());
+        userRepository.save(user);
 
     }
 
@@ -160,5 +178,14 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(true);
 
         userRepository.save(user);
+    }
+
+    @Override
+    public void createPasswordResetTokenForUser(User user) {
+        String token = UUID.randomUUID().toString();
+
+        PasswordResetToken myToken = new PasswordResetToken(token, user);
+
+        passwordResetTokenRepository.save(myToken);
     }
 }
