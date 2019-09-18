@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -51,13 +52,13 @@
 
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Użytkownicy</h1>
-                <p class="mb-4">Zarządzaj użytkownikami</p>
+                <h1 class="h3 mb-2 text-gray-800"><spring:message code="admin.users" text="default"/></h1>
+                <p class="mb-4"><spring:message code="admin.manageusers" text="default"/></p>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Lista użytkowników</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"><spring:message code="admin.userlist" text="default"/></h6>
                     </div>
 
                     <div class="card-body">
@@ -65,22 +66,22 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Imię</th>
-                                    <th>Nazwisko</th>
+                                    <th><spring:message code="admin.name" text="default"/></th>
+                                    <th><spring:message code="admin.surname" text="default"/></th>
                                     <th>Email</th>
-                                    <th>Aktywny</th>
-                                    <th>Edytuj</th>
-                                    <th>Usuń</th>
+                                    <th><spring:message code="admin.active" text="default"/></th>
+                                    <th><spring:message code="admin.edit" text="default"/></th>
+                                    <th><spring:message code="admin.delete" text="default"/></th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                    <th>Imię</th>
-                                    <th>Nazwisko</th>
+                                    <th><spring:message code="admin.name" text="default"/></th>
+                                    <th><spring:message code="admin.surname" text="default"/></th>
                                     <th>Email</th>
-                                    <th>Aktywny</th>
-                                    <th>Edytuj</th>
-                                    <th>Usuń</th>
+                                    <th><spring:message code="admin.active" text="default"/></th>
+                                    <th><spring:message code="admin.edit" text="default"/></th>
+                                    <th><spring:message code="admin.delete" text="default"/></th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
@@ -95,7 +96,7 @@
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
-                                                <span class="text">Edytuj</span>
+                                                <span class="text"><spring:message code="admin.edit" text="default"/></span>
                                             </a>
                                         </td>
                                         <td data-table-header="Delete">
@@ -103,7 +104,7 @@
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
-                                                <span class="text">Usuń</span>
+                                                <span class="text"><spring:message code="admin.delete" text="default"/></span>
                                             </a>
                                         </td>
                                     </tr>

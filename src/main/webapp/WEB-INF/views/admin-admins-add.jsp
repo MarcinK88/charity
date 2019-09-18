@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -30,6 +31,10 @@
 <sec:authentication var="user" property="principal" />
 
 <body id="page-top">
+<spring:message code="register.name" var="name"/>
+<spring:message code="register.surname" var="surname"/>
+<spring:message code="register.pass" var="pass"/>
+<spring:message code="register.repass" var="repass"/>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -55,12 +60,12 @@
                                         <div class="p-5">
                                             <form:form method="post" modelAttribute="admin" class="user">
                                                 <div class="form-group">
-                                                    <label for="name">Imię</label>
-                                                    <form:input path="name" id="name" name="name" type="text" placeholder="Imię" cssClass="form-control form-control-user" />
+                                                    <label for="name"><spring:message code="edituser.name" text="default"/></label>
+                                                    <form:input path="name" id="name" name="name" type="text" placeholder='${name}' cssClass="form-control form-control-user" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="surname">Nazwisko</label>
-                                                    <form:input path="surname" id="surname" name="surname" type="text" placeholder="Nazwisko" cssClass="form-control form-control-user" />
+                                                    <label for="surname"><spring:message code="edituser.surname" text="default"/></label>
+                                                    <form:input path="surname" id="surname" name="surname" type="text" placeholder='${surname}' cssClass="form-control form-control-user" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="username">Email</label>
@@ -69,21 +74,21 @@
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="password">Hasło</label>
-                                                    <form:input path="password" id="password" name="password" type="password" placeholder="Hasło" cssClass="form-control form-control-user" />
+                                                    <label for="password"><spring:message code="login.pass" text="default"/></label>
+                                                    <form:input path="password" id="password" name="password" type="password" placeholder='${pass}' cssClass="form-control form-control-user" />
                                                     <form:errors path="password"  />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="confirmPassword">Powtórz hasło</label>
-                                                    <form:input path="confirmPassword" id="confirmPassword" name="confirmPassword" type="password" placeholder="Powtórz hasło" cssClass="form-control form-control-user" />
+                                                    <label for="confirmPassword"><spring:message code="register.repass" text="default"/></label>
+                                                    <form:input path="confirmPassword" id="confirmPassword" name="confirmPassword" type="password" placeholder='${repass}' cssClass="form-control form-control-user" />
                                                     <form:errors path="confirmPassword" />
                                                 </div>
                                                 <form:hidden path="enabled"/>
                                                 <form:hidden path="id"/>
                                                 <div class="px-sm-5">
-                                                    <button type="submit" id="save" name="save" class="btn btn-success btn-user btn-block">Zapisz</button>
+                                                    <button type="submit" id="save" name="save" class="btn btn-success btn-user btn-block"><spring:message code="edituser.save" text="default"/></button>
                                                     <a href="/admin/admins" class="btn btn-secondary btn-user btn-block">
-                                                        Anuluj
+                                                        <spring:message code="edituser.cancel" text="default"/>
                                                     </a>
                                                 </div>
                                             </form:form>

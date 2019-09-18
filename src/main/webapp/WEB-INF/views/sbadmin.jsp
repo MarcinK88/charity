@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -50,7 +51,7 @@
 
     <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <h1 class="h3 mb-0 text-gray-800"><spring:message code="admin.dashboard" text="default"/></h1>
    </div>
 
 <!-- Content Row -->
@@ -62,7 +63,7 @@
     <div class="card-body">
     <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Użytkowników</div>
+    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><spring:message code="admin.ofusers" text="default"/></div>
     <div class="h5 mb-0 font-weight-bold text-gray-800">${quantityUsers}</div>
 </div>
 <div class="col-auto">
@@ -79,7 +80,7 @@
     <div class="card-body">
     <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Administratorów</div>
+    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><spring:message code="admin.ofadmin" text="default"/></div>
     <div class="h5 mb-0 font-weight-bold text-gray-800">${quantityAdministrators}</div>
 </div>
 <div class="col-auto">
@@ -96,7 +97,7 @@
     <div class="card-body">
     <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Instytucji</div>
+    <div class="text-xs font-weight-bold text-info text-uppercase mb-1"><spring:message code="admin.ofinsts" text="default"/></div>
     <div class="row no-gutters align-items-center">
     <div class="col-auto">
     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${quantityInstitutions}</div>
@@ -120,7 +121,7 @@
     <div class="card-body">
     <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Darów</div>
+    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><spring:message code="admin.ofdonats" text="default"/></div>
 <div class="h5 mb-0 font-weight-bold text-gray-800">${quantityDonations}</div>
     </div>
     <div class="col-auto">
