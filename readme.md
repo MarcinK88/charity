@@ -2,7 +2,7 @@
 # Charity
 
 ### Opis programu
-Aplikacja, przez która każdy będzie mógł oddać niepotrzebne rzeczy zaufanym instytucjom.
+Aplikacja, przez która każdy może oddać niepotrzebne rzeczy zaufanym instytucjom.
 
 ### Funkcjonalności
 1. Profil administratora:
@@ -28,7 +28,8 @@ Aplikacja, przez która każdy będzie mógł oddać niepotrzebne rzeczy zaufany
 - potwierdzenie aktywacji konta poprzez wiadomość przesłaną na email podany przy rejestracji,
 - obsługa zapomnianych haseł,
 - walidacja poprawnego podania dwóch identycznych haseł,
-- walidacja obsługi administratorów (np. brak możliwości skasowania ostatniego istniejącego administratora).
+- walidacja obsługi administratorów (brak możliwości skasowania ostatniego istniejącego administratora),
+- zmiana języka (polski/angielski)
 
 ### Użyte technologie
 - Spring Boot
