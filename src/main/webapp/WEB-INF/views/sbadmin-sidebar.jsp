@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- Sidebar -->
@@ -18,7 +19,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="/admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span><spring:message code="admin.dashboard" text="default"/></span></a>
     </li>
 
     <!-- Divider -->
@@ -26,31 +27,31 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        <spring:message code="admin.interface" text="default"/>
     </div>
 
     <li class="nav-item">
         <a class="nav-link" href="/admin/users">
             <i class="fas fa-fw fa-user-circle"></i>
-            <span>Użytkownicy</span></a>
+            <span><spring:message code="admin.users" text="default"/></span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="/admin/admins">
             <i class="fas fa-fw fa-user"></i>
-            <span>Administratorzy</span></a>
+            <span><spring:message code="admin.admins" text="default"/></span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="/admin/institutions">
             <i class="fas fa-fw fa-building"></i>
-            <span>Instytucje</span></a>
+            <span><spring:message code="admin.insts" text="default"/></span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="/admin/donations">
             <i class="fas fa-fw fa-gift"></i>
-            <span>Dary</span></a>
+            <span><spring:message code="admin.donats" text="default"/></span></a>
     </li>
 
 

@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -55,15 +56,15 @@
                         <div class="row">
                             <div class="col-lg-10">
                                 <div class="p-5">
-                                    Czy na pewno chcesz usunąć instytucję "${institution.name}"?
+                                    <spring:message code="admin.institution.delete.confirm" text="default"/> "${institution.name}"?
                                     <form:form method="post" modelAttribute="institution">
                                         <form:hidden path="id"/>
                                         <form:hidden path="name"/>
                                         <form:hidden path="description"/>
                                         <div class="p-md-5">
-                                            <button type="submit" id="save" name="save" class="btn btn-success btn-user btn-block">Usuń</button>
+                                            <button type="submit" id="save" name="save" class="btn btn-success btn-user btn-block"><spring:message code="admin.delete" text="default"/></button>
                                             <a href="/admin/institutions" class="btn btn-secondary btn-user btn-block">
-                                                Anuluj
+                                                <spring:message code="edituser.cancel" text="default"/>
                                             </a>
                                         </div>
                                     </form:form>

@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -30,7 +31,8 @@
 <sec:authentication var="user" property="principal" />
 
 <body id="page-top">
-
+<spring:message code="admin.title" var="title"/>
+<spring:message code="admin.describe" var="describe"/>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -55,17 +57,17 @@
                                         <div class="p-5">
                                             <form:form method="post" modelAttribute="institution" class="user">
                                                 <div class="form-group">
-                                                    <label for="name">Nazwa</label>
-                                                    <form:input path="name" id="name" name="name" type="text" placeholder="Nazwa" cssClass="form-control form-control-user" />
+                                                    <label for="name"><spring:message code="admin.title" text="default"/></label>
+                                                    <form:input path="name" id="name" name="name" type="text" placeholder='${title}' cssClass="form-control form-control-user" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="description">Opis</label>
-                                                    <form:input path="description" id="description" name="description" type="text" placeholder="Opis" cssClass="form-control form-control-user" />
+                                                    <label for="description"><spring:message code="admin.describe" text="default"/></label>
+                                                    <form:input path="description" id="description" name="description" type="text" placeholder='${describe}' cssClass="form-control form-control-user" />
                                                 </div>
                                                 <div class="px-sm-5">
-                                                    <button type="submit" id="save" name="save" class="btn btn-success btn-user btn-block">Zapisz</button>
+                                                    <button type="submit" id="save" name="save" class="btn btn-success btn-user btn-block"><spring:message code="edituser.save" text="default"/></button>
                                                     <a href="/admin/institutions" class="btn btn-secondary btn-user btn-block">
-                                                        Anuluj
+                                                        <spring:message code="edituser.cancel" text="default"/>
                                                     </a>
                                                 </div>
                                             </form:form>

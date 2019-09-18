@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -51,13 +52,13 @@
 
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Dary</h1>
-                <p class="mb-4">Zarządzaj darami</p>
+                <h1 class="h3 mb-2 text-gray-800"><spring:message code="admin.donats" text="default"/></h1>
+                <p class="mb-4"><spring:message code="admin.managedonats" text="default"/></p>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Lista darów</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"><spring:message code="admin.donatslist" text="default"/></h6>
 
                     </div>
 
@@ -66,38 +67,38 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th title="quantity">Ilość</th>
-                                    <th title="categories">Kategorie</th>
-                                    <th title="institution">Instytucja</th>
-                                    <th title="user">Użytkownik</th>
-                                    <th title="street">Ulica</th>
-                                    <th title="city">Miasto</th>
-                                    <th title="zipcode">Kod pocztowy</th>
-                                    <th title="pickupdate">Termin odbioru</th>
-                                    <th title="pickuptime">Czas odbioru</th>
-                                    <th title="comment">Komentarz</th>
-                                    <th title="phone">Telefon</th>
-                                    <th title="pickedup">Odebrane</th>
-                                    <th title="edit">Odbierz</th>
-                                    <th title="delete">Usuń</th>
+                                    <th title="quantity"><spring:message code="donationdetails.quantity" text="default"/></th>
+                                    <th title="categories"><spring:message code="donationdetails.categories" text="default"/></th>
+                                    <th title="institution"><spring:message code="donationdetails.institution" text="default"/></th>
+                                    <th title="user"><spring:message code="user" text="default"/></th>
+                                    <th title="street"><spring:message code="donation.s4.street" text="default"/></th>
+                                    <th title="city"><spring:message code="donation.s4.city" text="default"/></th>
+                                    <th title="zipcode"><spring:message code="donation.s4.zipcode" text="default"/></th>
+                                    <th title="pickupdate"><spring:message code="donation.s4.pickuptime" text="default"/></th>
+                                    <th title="pickuptime"><spring:message code="hour" text="default"/></th>
+                                    <th title="comment"><spring:message code="donationdetails.comment" text="default"/></th>
+                                    <th title="phone"><spring:message code="donationdetails.phone" text="default"/></th>
+                                    <th title="pickedup"><spring:message code="donationdetails.ispicked" text="default"/></th>
+                                    <th title="edit"><spring:message code="admin.pickup" text="default"/></th>
+                                    <th title="delete"><spring:message code="admin.delete" text="default"/></th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                    <th title="quantity">Ilość</th>
-                                    <th title="categories">Kategorie</th>
-                                    <th title="institution">Instytucja</th>
-                                    <th title="user">Użytkownik</th>
-                                    <th title="street">Ulica</th>
-                                    <th title="city">Miasto</th>
-                                    <th title="zipcode">Kod pocztowy</th>
-                                    <th title="pickupdate">Termin odbioru</th>
-                                    <th title="pickuptime">Czas odbioru</th>
-                                    <th title="comment">Komentarz</th>
-                                    <th title="phone">Telefon</th>
-                                    <th title="pickedup">Odebrane</th>
-                                    <th title="edit">Odbierz</th>
-                                    <th title="delete">Usuń</th>
+                                    <th title="quantity"><spring:message code="donationdetails.quantity" text="default"/></th>
+                                    <th title="categories"><spring:message code="donationdetails.categories" text="default"/></th>
+                                    <th title="institution"><spring:message code="donationdetails.institution" text="default"/></th>
+                                    <th title="user"><spring:message code="user" text="default"/></th>
+                                    <th title="street"><spring:message code="donation.s4.street" text="default"/></th>
+                                    <th title="city"><spring:message code="donation.s4.city" text="default"/></th>
+                                    <th title="zipcode"><spring:message code="donation.s4.zipcode" text="default"/></th>
+                                    <th title="pickupdate"><spring:message code="donation.s4.pickuptime" text="default"/></th>
+                                    <th title="pickuptime"><spring:message code="hour" text="default"/></th>
+                                    <th title="comment"><spring:message code="donationdetails.comment" text="default"/></th>
+                                    <th title="phone"><spring:message code="donationdetails.phone" text="default"/></th>
+                                    <th title="pickedup"><spring:message code="donationdetails.ispicked" text="default"/></th>
+                                    <th title="edit"><spring:message code="admin.pickup" text="default"/></th>
+                                    <th title="delete"><spring:message code="admin.delete" text="default"/></th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
@@ -124,7 +125,7 @@
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>
-                                                <span class="text">Odbierz</span>
+                                                <span class="text"><spring:message code="admin.pickup" text="default"/></span>
                                             </a>
                                         </td>
                                         <td data-table-header="edit">
@@ -132,7 +133,7 @@
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
-                                                <span class="text">Usuń</span>
+                                                <span class="text"><spring:message code="admin.delete" text="default"/></span>
                                             </a>
                                         </td>
                                     </tr>
