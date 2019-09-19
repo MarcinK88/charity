@@ -2,7 +2,7 @@
 # Charity
 
 ### Opis programu
-Aplikacja, przez która każdy może oddać niepotrzebne rzeczy zaufanym instytucjom.
+Aplikacja, przez którą każdy może oddać niepotrzebne rzeczy zaufanym instytucjom.
 
 ### Funkcjonalności
 1. Profil administratora:
