@@ -11,7 +11,7 @@ Aplikacja, przez którą każdy może oddać niepotrzebne rzeczy zaufanym instyt
  - zarządzanie (**CRUD**) zaufanymi instytucjami,
  - przeglądanie, edycja, usuwanie zarejestrowanych użytkowników,
  - przegląd przekazanych darów.
--  możliwością określenia statusów darów (złożone/odebrane/przekazane)
+-  możliwość określenia statusów darów (złożone/odebrane/przekazane)
 
 2. Profil użytkownika:
  - rejestracja,
