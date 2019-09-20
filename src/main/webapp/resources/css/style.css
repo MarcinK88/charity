@@ -1152,7 +1152,7 @@ header nav ul.nav--actions .logged-user ul a {
 }
 
 /* line 69, scss/modules/_navigation.scss */
-header nav ul.nav--actions .language:hover ul {
+header nav ul.nav--actions .logged-user:hover ul {
   display: block;
 }
 
