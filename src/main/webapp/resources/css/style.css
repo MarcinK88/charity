@@ -1152,9 +1152,78 @@ header nav ul.nav--actions .logged-user ul a {
 }
 
 /* line 69, scss/modules/_navigation.scss */
-header nav ul.nav--actions .logged-user:hover ul {
+header nav ul.nav--actions .language:hover ul {
   display: block;
 }
+
+
+
+header nav ul.nav--actions .language {
+  padding-right: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* line 26, scss/modules/_navigation.scss */
+header nav ul.nav--actions .language:after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-size: cover;
+}
+
+/* line 38, scss/modules/_navigation.scss */
+header nav ul.nav--actions .language ul {
+  display: none;
+  position: absolute;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: right;
+  background-color: #fff;
+  padding: 12px 0 0;
+  font-size: 1.4rem;
+  width: 120px;
+  right: 0;
+}
+
+/* line 49, scss/modules/_navigation.scss */
+header nav ul.nav--actions .language ul li {
+  border-left: 1px solid #3c3c3c;
+  border-right: 1px solid #3c3c3c;
+}
+
+/* line 53, scss/modules/_navigation.scss */
+header nav ul.nav--actions .language ul li:first-of-type {
+  border-top: 1px solid #3c3c3c;
+}
+
+/* line 57, scss/modules/_navigation.scss */
+header nav ul.nav--actions .language ul li:last-of-type {
+  border-bottom: 1px solid #3c3c3c;
+}
+
+/* line 62, scss/modules/_navigation.scss */
+header nav ul.nav--actions .language ul a {
+  display: inline-block;
+  padding: 6px;
+}
+
+/* line 69, scss/modules/_navigation.scss */
+header nav ul.nav--actions .language:hover ul {
+  display: block;
+}
+
+
+
+
+
+
 
 /* line 76, scss/modules/_navigation.scss */
 header nav ul li {
