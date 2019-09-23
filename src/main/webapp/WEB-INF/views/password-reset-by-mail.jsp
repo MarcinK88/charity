@@ -30,7 +30,7 @@
         <form:hidden path="userRoles"/>
         <form:hidden path="id"/>
         <div class="form-group">
-            <input  type="password" name="password" id="password" placeholder='${new}' />
+            <input  type="password" name="password" id="password" placeholder="<spring:message code="changepwd.new" text="default"/>" />
             <form:errors path="password" cssClass="error" />
         </div>
         <div class="form-group">

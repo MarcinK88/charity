@@ -9,14 +9,20 @@ import pl.coderslab.charity.Models.User;
 import pl.coderslab.charity.Models.VerificationToken;
 import pl.coderslab.charity.Services.EmailService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Component
 public class EmailServiceImpl implements EmailService {
+
+    private final HttpServletRequest request;
 
     private JavaMailSender emailSender;
 
     @Autowired
-    public EmailServiceImpl(JavaMailSender emailSender) {
+    public EmailServiceImpl(JavaMailSender emailSender, HttpServletRequest request) {
         this.emailSender = emailSender;
+        this.request = request;
     }
 
     public void sendContactForm(String name, String surname, String text) {
@@ -38,7 +44,7 @@ public class EmailServiceImpl implements EmailService {
 
         message.setSubject("Account activation");
 
-        String text = "http://localhost:8080/confirmRegister?token=" + token.getToken();
+        String text = request.getRemoteAddr() + "/confirmRegister?token=" + token.getToken();
         message.setText(text);
 
         emailSender.send(message);
@@ -52,7 +58,7 @@ public class EmailServiceImpl implements EmailService {
 
         message.setSubject("Password reset");
 
-        String text = "http://localhost:8080/passwordreset?token=" + byUser.getToken();
+        String text = request.getRemoteAddr() + "/passwordreset?token=" + byUser.getToken();
 
         message.setText(text);
 
